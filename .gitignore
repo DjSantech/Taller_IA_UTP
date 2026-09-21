@@ -16,6 +16,10 @@ __pycache__/
 resultados/*.csv
 resultados/*.png
 
+# Ajustes locales del editor: contienen rutas absolutas de esta maquina,
+# asi que no deben viajar en el repositorio (romperian la portabilidad).
+.vscode/
+
 # Sistema operativo
 Thumbs.db
 desktop.ini
