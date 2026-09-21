@@ -1,0 +1,21 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Cache de Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# Salidas generadas por los experimentos (se regeneran ejecutando el cuaderno)
+resultados/*.csv
+resultados/*.png
+
+# Sistema operativo
+Thumbs.db
+desktop.ini

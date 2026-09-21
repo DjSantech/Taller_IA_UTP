@@ -1,0 +1,4 @@
+# Dependencias del taller (versiones fijadas para reproducibilidad)
+simpleai==0.8.3
+matplotlib==3.10.0
+numpy==2.2.1
