@@ -5,6 +5,8 @@ simpleai==0.8.3        # Version 2 del taller: subclase de SearchProblem
 matplotlib==3.11.2     # Graficas obligatorias y mapa de calor de Lee
 numpy==2.5.3           # Medianas, rangos intercuartilicos y rejillas del frente de onda
 ipykernel==7.3.0       # Kernel de Jupyter asociado al entorno virtual
+nbformat==5.11.1       # tools/ejecutar_cuaderno.py: leer y validar el .ipynb
+nbclient==0.11.0       # tools/ejecutar_cuaderno.py: ejecutarlo en un kernel nuevo
 
 # AIMA-Python NO se distribuye por PyPI: es un repositorio.
 # Los modulos aima/search.py y aima/utils.py se traen al proyecto en la etapa 9
