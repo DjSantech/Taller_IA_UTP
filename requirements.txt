@@ -1,4 +1,12 @@
-# Dependencias del taller (versiones fijadas para reproducibilidad)
-simpleai==0.8.3
-matplotlib==3.10.0
-numpy==2.2.1
+# Dependencias del taller — versiones verificadas sobre Python 3.13.7 (Windows 11).
+# La reproducibilidad incluye las versiones de las bibliotecas, no solo las semillas.
+
+simpleai==0.8.3        # Version 2 del taller: subclase de SearchProblem
+matplotlib==3.11.2     # Graficas obligatorias y mapa de calor de Lee
+numpy==2.5.3           # Medianas, rangos intercuartilicos y rejillas del frente de onda
+ipykernel==7.3.0       # Kernel de Jupyter asociado al entorno virtual
+
+# AIMA-Python NO se distribuye por PyPI: es un repositorio.
+# Los modulos aima/search.py y aima/utils.py se traen al proyecto en la etapa 9
+# (vendorizados y citados), porque el enunciado prohibe modificar la biblioteca.
+#   https://github.com/aimacode/aima-python  ->  aima/search.py, aima/utils.py

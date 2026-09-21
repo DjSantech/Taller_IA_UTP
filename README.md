@@ -30,11 +30,16 @@ ni resultados pegados a mano.
 ## Reproducir
 
 ```bash
-python -m venv .venv
-.venv\Scripts\activate          # Windows
+# El entorno se crea FUERA de la carpeta sincronizada por OneDrive (ver D-03).
+python -m venv C:\Users\<usuario>\venvs\ia-taller1
+C:\Users\<usuario>\venvs\ia-taller1\Scripts\activate
 pip install -r requirements.txt
-jupyter lab                      # o: jupyter notebook
+python -m ipykernel install --user --name ia-taller1 --display-name "Python (ia-taller1)"
+jupyter lab                      # seleccionar el kernel "Python (ia-taller1)"
 ```
+
+Entorno verificado: **Python 3.13.7 / Windows 11**. SimpleAI 0.8.3 importa y
+ejecuta correctamente en Python 3.13, comprobado con un `SearchProblem` mínimo.
 
 Todo resultado aleatorio depende de una **semilla explícita**; no hay estado global oculto.
 
@@ -45,7 +50,7 @@ Cada etapa cierra con un commit propio, de modo que el historial muestre el proc
 | Etapa | Contenido | Estado |
 |---|---|---|
 | 0 | Estructura del repositorio, entorno y bitácora | ✅ |
-| 1 | Auditoría del generador Hunt-and-Kill + pruebas de invariantes | ⬜ |
+| 1 | Auditoría del generador Hunt-and-Kill + pruebas de invariantes | 🚧 |
 | 2 | Instancia individual reproducible y formulación formal del espacio de estados | ⬜ |
 | 3 | Contrato `ResultadoBusqueda`, núcleo de búsqueda en grafo, DFS y BFS | ⬜ |
 | 4 | Búsqueda de costo uniforme (UCS) con entradas obsoletas | ⬜ |
