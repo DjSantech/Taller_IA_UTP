@@ -93,3 +93,99 @@ Formato de cada entrada:
   camino esperado como lista de pares `(acción, estado)`.
 
 ---
+
+## Etapa 1 — Auditoría del generador Hunt-and-Kill (2026-09-21)
+
+### D-07 · Las utilidades de verificación no reutilizan los buscadores
+
+- **Decisión:** la inundación (`inundar`) y el detector de ciclos
+  (`buscar_ciclo`) de la Actividad 1 se escriben aparte y no se comparten con
+  los algoritmos de la Versión 1.
+- **Alternativas:** implementar primero el BFS de la Versión 1 y usarlo para
+  comprobar la conectividad del grafo, ahorrando código.
+- **Por qué:** si el grafo se valida con el mismo buscador que después va a
+  correr sobre ese grafo, un error compartido por ambos **se cancela** y la
+  prueba pasa estando las dos cosas mal. Una prueba solo tiene valor si puede
+  fallar de forma independiente de aquello que verifica. Además la auditoría
+  debe poder ejecutarse antes de que exista un solo buscador, que es el orden
+  en que el enunciado plantea las secciones.
+- **Consecuencia:** hay duplicación deliberada de unas veinte líneas. Es el
+  precio de la independencia y se asume a sabiendas.
+
+### D-08 · Se audita la reproducibilidad entre procesos, no solo dentro de uno
+
+- **Decisión:** además de comprobar que la misma semilla reproduce el mismo
+  grafo en el proceso actual, se lanzan subprocesos con `PYTHONHASHSEED` en
+  {0, 1, 42} y se comparan huellas SHA-256.
+- **Por qué:** el generador ejecuta `rng.choice(tuple(no_visitadas))` y en la
+  fase Hunt recorre `no_visitadas` con un `for`. El **orden de iteración de un
+  conjunto alimenta al generador aleatorio**. Eso es reproducible solo porque
+  las celdas son tuplas de enteros y CPython no aleatoriza el hash de enteros
+  ni de tuplas de enteros. Con celdas representadas como cadenas, la semilla
+  no garantizaría nada y una prueba de un solo proceso no lo detectaría nunca.
+- **Consecuencia:** queda justificado por qué el enunciado exige estados
+  inmutables y hashables: la representación del estado condiciona la
+  reproducibilidad, no es una cuestión de estilo. Esta decisión fija la
+  representación `(fila, columna)` como tupla de enteros para todo el taller.
+
+### D-09 · ERROR CORREGIDO — la prueba de no idempotencia estaba mal planteada
+
+- **Qué se hizo primero:** la comprobación 11 verifica que llamar `generar()`
+  dos veces sobre el mismo objeto rompe el árbol (agrega otras |V|-1 aristas y
+  crea ciclos). Se escribió asumiendo que eso vale para cualquier rejilla.
+- **Qué falló:** al ejecutar la batería sobre los casos límite, la
+  comprobación 11 **falló en una rejilla 1x5** y detuvo el cuaderno.
+- **Diagnóstico:** en una rejilla degenerada 1xN o Nx1 la rejilla *es* un
+  camino y su único árbol de expansión es ella misma. Tras la primera pasada
+  todas las aristas posibles ya existen, así que la segunda intenta recrear
+  **las mismas** aristas y `set.add` las descarta en silencio: el conteo
+  permanece en |V|-1 y no aparece ningún ciclo.
+- **Corrección:** el defecto no es universal. Se observa solo si la rejilla
+  posee ciclos propios, es decir si filas >= 2 y columnas >= 2. La
+  comprobación se marca **no aplicable** en rejillas degeneradas, en lugar de
+  forzarla o de borrarla.
+- **Lección:** el error estaba en la prueba, no en el código auditado. Los
+  casos límite no sirven solo para encontrar fallos en el sujeto: también
+  revelan supuestos no declarados en el instrumento de medición.
+
+### D-10 · ERROR CORREGIDO — `inspect.getsource` no lee una celda bajo nbconvert
+
+- **Qué se hizo primero:** la comprobación 10 necesita el fuente de
+  `LaberintoHuntKill` para re-ejecutarlo en un subproceso limpio, y se obtenía
+  con `inspect.getsource(clase)`.
+- **Qué falló:** funcionaba al ejecutar el código como script y habría
+  funcionado en una sesión interactiva de Jupyter, porque IPython registra el
+  código de cada celda en `linecache`. Pero al comprobar que el cuaderno corre
+  de arriba abajo con `jupyter nbconvert --execute` —justamente el modo que
+  exige el enunciado— lanzó `OSError: source code not available`.
+- **Por qué fue peor que un fallo:** el respaldo marcaba la comprobación como
+  «no aplicable», así que la auditoría **parecía** pasar con un agujero dentro.
+  Un fallo ruidoso habría sido preferible a una degradación silenciosa.
+- **Corrección:** una función `fuente_del_generador` que intenta
+  `inspect.getsource` y, si falla, lee el propio `.ipynb` del directorio de
+  trabajo y localiza la celda que define la clase **por el nombre de la clase,
+  no por su índice**, de modo que reordenar celdas no rompa la prueba. Y el
+  resumen de la auditoría ahora imprime explícitamente cuántas comprobaciones
+  quedaron sin aplicar, para que una degradación no pase desapercibida.
+- **Lección:** «funciona en mi sesión de Jupyter» no equivale a «el cuaderno se
+  ejecuta en un entorno limpio». Son dos entornos distintos y el enunciado
+  evalúa el segundo.
+
+### D-11 · Cada prueba de invariancia lleva su contra-experimento
+
+- **Decisión:** la comprobación 10 no solo verifica que el laberinto sea
+  invariante frente a `PYTHONHASHSEED`; ejecuta en paralelo el mismo
+  experimento con las celdas representadas como **cadenas** y exige que ahí el
+  orden **sí** cambie.
+- **Por qué:** una prueba que no puede fallar no vale nada. Si `PYTHONHASHSEED`
+  no llegara al subproceso —un error al construir el diccionario de entorno, o
+  una versión de Python que lo ignorase—, las tres huellas coincidirían por una
+  razón trivial y la comprobación pasaría sin haber comprobado nada. El
+  contra-experimento demuestra que la variable surte efecto.
+- **Evidencia medida:** con tuplas, las tres huellas son `a93509a735f498d8`;
+  con cadenas, son `f53b8fdc…`, `8bdb23d1…` y `373d0253…`, tres órdenes
+  distintos.
+- **Consecuencia:** el patrón se reutiliza en la sección 8. Toda prueba de
+  concordancia entre versiones incluirá un caso donde deba discrepar.
+
+---
