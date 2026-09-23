@@ -679,3 +679,58 @@ Formato de cada entrada:
   solución, y DLS con límite igual a la profundidad de BFS.
 
 ---
+
+## Etapa 9 — Versión AIMA-Python (2026-09-23)
+
+### D-34 · Vendorización efectiva de AIMA-Python
+
+- **Decisión:** se copian `aima/__init__.py`, `aima/search.py` y
+  `aima/utils.py` desde `aimacode/aima-python`, rama `master`, commit
+  `bbf6bc2` (2026-06-29), junto con su licencia MIT en `aima/LICENSE`. No se
+  modifica ninguna línea. Se importan como el paquete `aima` desde la raíz
+  del proyecto, que es el directorio de trabajo del kernel.
+- **Por qué:** cumple D-05. El commit fijado hace reproducible la versión,
+  igual que la versión fijada de SimpleAI en `requirements.txt`.
+
+### D-35 · Instrumentación de AIMA en la subclase de `Problem`
+
+- **Decisión:** `LaberintoAIMA(Problem)` delega en `ProblemaLaberinto` y lleva
+  los contadores. `actions` cuenta expansiones, `result` cuenta nodos
+  generados, y los estados distintos vistos dan los insertados; de ahí salen
+  los repetidos y, en búsqueda en grafo, el tamaño de la frontera
+  (*1 + insertados − expandidos*). En la DLS recursiva, la altura de la pila
+  se reconstruye a partir de la secuencia de `goal_test` y `actions`.
+- **Alternativas:** sustituir temporalmente `aima.search.Node` por una
+  subclase contadora; envolver las funciones de búsqueda.
+- **Por qué:** AIMA no expone visor ni ganchos, y sus fronteras son variables
+  locales. El problema es la única interfaz pública que todas sus búsquedas
+  usan. Sustituir `Node` también sería legítimo («sin alterar
+  permanentemente»), pero `bidirectional_search` crea nodos centinela
+  (`Node(-1)`) en cada llamada a `find_key` e inflaría la cuenta.
+- **Validación:** las predicciones se cumplen. La DFS de AIMA coincide en
+  las cuatro métricas con SimpleAI y con nuestra DFS sin invertir, y la UCS
+  de AIMA coincide en las cuatro con la de la Versión 1. Si los contadores
+  estuvieran mal, estas igualdades exactas no se darían.
+
+### D-36 · Diferencias de AIMA documentadas
+
+- **BFS prueba el objetivo al generar** (figura 3.11 del libro). Expande 241
+  estados frente a 249. Se comprueba que 241 es la posición del padre de la
+  meta en el orden de expansión de nuestra BFS. La diferencia es de
+  **convención**, no de algoritmo, y por eso la Versión 1 mantiene la prueba
+  al extraer que fija el enunciado.
+- **DLS e IDDFS no controlan ciclos.** `recursive_dls` es búsqueda en árbol
+  pura: en un grafo no dirigido recorre caminatas. Con límite 16 genera
+  284 650 nodos frente a 82 de la Versión 1. Hasta la profundidad 59 el árbol
+  de caminatas tiene unos 4,05 × 10¹⁹ nodos, calculados con programación
+  dinámica y no ejecutando. En la instancia no se ejecutan; se comparan en el
+  3×3 y, en los experimentos, solo en instancias pequeñas. A favor de AIMA:
+  **sí** distingue `'cutoff'` de `None`, a diferencia de SimpleAI.
+- **`bidirectional_search` es MM y devuelve solo el costo.** No hay camino ni
+  acciones, así que no puede llenar el contrato; se compara el costo óptimo.
+  Con `h = 0` es óptima en costo: da 12 en el grafo ponderado, donde nuestra
+  bidireccional por capas, óptima en pasos, da 17. Tras las etapas 6 y 9, la
+  comparación de las dos bidireccionales muestra que «bidireccional» nombra
+  una familia, no un algoritmo.
+
+---

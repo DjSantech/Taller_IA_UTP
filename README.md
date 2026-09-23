@@ -26,6 +26,8 @@ ni resultados pegados a mano.
 | `BITACORA.md` | Bitácora de decisiones de diseño y errores corregidos |
 | `requirements.txt` | Dependencias con versión fijada |
 | `resultados/` | Salidas regenerables del protocolo experimental |
+| `aima/` | AIMA-Python vendorizado sin modificar (commit `bbf6bc2`, licencia MIT) |
+| `tools/ejecutar_cuaderno.py` | Ejecuta el cuaderno completo en un kernel nuevo |
 
 ## Reproducir
 
@@ -58,8 +60,8 @@ Cada etapa cierra con un commit propio, de modo que el historial muestre el proc
 | 6 | Búsqueda bidireccional | ✅ |
 | 7 | Algoritmo de Lee y visualización del frente de onda | ✅ |
 | 8 | Versión SimpleAI e instrumentación de métricas | ✅ |
-| 9 | Versión AIMA-Python e instrumentación de métricas | 🚧 |
-| 10 | Pruebas de aceptación, casos límite y concordancia entre versiones | ⬜ |
+| 9 | Versión AIMA-Python e instrumentación de métricas | ✅ |
+| 10 | Pruebas de aceptación, casos límite y concordancia entre versiones | 🚧 |
 | 11 | Segunda familia de problemas: ciclos y costos no unitarios | ⬜ |
 | 12 | Protocolo experimental (≥30 instancias) y gráficas obligatorias | ⬜ |
 | 13 | Análisis teórico, conclusiones y referencias | ⬜ |
