@@ -832,3 +832,79 @@ Formato de cada entrada:
   se da ninguna de las dos condiciones.
 
 ---
+
+## Etapa 12 — Protocolo experimental (2026-09-23)
+
+### D-41 · Factorial completo y pareado, con 30 laberintos por tamaño
+
+- **Decisión:** 3 tamaños × 3 topologías × 3 posiciones × 2 regímenes de
+  costo = 54 configuraciones, con 30 réplicas cada una. Las réplicas son
+  laberintos distintos (semillas `SEMILLA_BASE + i`). Dentro de una réplica,
+  todas las topologías se abren sobre el **mismo** laberinto base, con su
+  misma semilla, y todos los algoritmos, posiciones y costos se ejecutan
+  sobre ellos.
+- **Alternativas:** generar un laberinto nuevo por configuración; variar un
+  factor a la vez.
+- **Por qué:** el diseño pareado elimina la variabilidad entre laberintos al
+  comparar algoritmos o topologías: la diferencia observada se debe al factor
+  que cambia. El factorial completo permite ver interacciones, por ejemplo
+  que la ventaja de la bidireccional depende de la topología. El tiempo de
+  generación se mide aparte, como exige el enunciado, y resulta dominante: en
+  40×40, unos 160 ms de generación frente a unos 4 ms de BFS.
+- **Costo:** unas 10 600 búsquedas en unos 2 minutos, dentro del límite
+  razonable para un cuaderno que debe ejecutarse completo.
+
+### D-42 · IDDFS con tope de expansiones y mediciones censuradas
+
+- **Decisión:** en el protocolo, IDDFS se ejecuta con un tope de 250 000
+  expansiones acumuladas. Si lo supera, la medición se registra como
+  **censurada**: se cuenta y entra en la mediana como «> tope» (valor
+  infinito), en lugar de descartarse.
+- **Por qué:** con ciclos, el costo de IDDFS tiene una cola muy pesada (en
+  la sonda previa, de 10 ms a 1,6 s en 15×15 según la semilla). Sin tope, una
+  sola instancia desafortunada podría dejar el cuaderno sin terminar.
+  Descartar esas instancias sesgaría la mediana hacia abajo, justo en contra
+  de lo que se quiere mostrar. La mediana y los cuartiles siguen siendo
+  válidos con valores censurados mientras no caigan en la zona censurada.
+- **Medido:** 4 de 450 ejecuciones censuradas.
+- **Hallazgo:** interpolar percentiles entre dos infinitos da `nan`. Se
+  convierte explícitamente a infinito y se imprime como `>250k`.
+
+### D-43 · Convenciones de las figuras
+
+- **Decisión:** cada algoritmo conserva su color en todas las figuras, en el
+  orden fijo de la paleta categórica. En las de líneas, la línea es la
+  mediana y la banda sombreada el rango Q1–Q3. Se usa escala logarítmica
+  donde los valores abarcan órdenes de magnitud. En los diagramas de
+  dispersión hay como máximo tres series por panel, y cuando hay más se
+  divide en paneles. Las etiquetas directas se omiten si chocan con otras
+  (líneas que coinciden, como BFS, UCS y Lee).
+- **Por qué:** mezclar las tres posiciones en una sola banda la ensanchaba
+  hasta hacerla ilegible, porque «cercanas» y «esquinas» difieren en dos
+  órdenes de magnitud. Las gráficas 1, 3 y 6 fijan la posición interior y la
+  tabla informa todas las configuraciones. Las figuras se guardan en
+  `resultados/` y no se versionan: la evidencia son `FILAS` y el CSV.
+- **Hallazgo en revisión:** la primera versión de la gráfica 4b emparejaba
+  con `zip` filas de las tres versiones mezcladas. Coincidían en orden por
+  accidente, pero comparaban la DFS de SimpleAI con la BFS de SimpleAI. Se
+  filtra por `version="V1"` antes de emparejar.
+
+### D-44 · ERROR CORREGIDO — un nombre «privado» de una celda tapaba una función de otra
+
+- **Qué pasó:** la gráfica 5 (mapa de calor de Lee) falló con
+  `TypeError: 'list' object is not callable` en `_paredes(...)`.
+- **Diagnóstico:** `_paredes` era la función que dibuja muros en la
+  sección 7. La celda de la sección 9 creó una variable `_paredes` (la lista
+  de paredes internas) y, como todas las celdas comparten el mismo espacio de
+  nombres, la sobrescribió. El prefijo `_` expresa «uso local», pero en un
+  cuaderno no protege nada.
+- **Corrección:** la variable de la sección 9 se renombró
+  `_paredes_arbol`. Se buscó en todas las celdas cualquier otro uso del
+  nombre.
+- **Lección:** en un cuaderno, un nombre temporal de una celda es global
+  para todas las siguientes. Es la misma clase de defecto que el enunciado
+  llama «dependencia implícita», pero al revés: una celda posterior rompe a
+  una anterior sin tocarla. Solo se detecta ejecutando todo de arriba abajo,
+  que es lo que hace `tools/ejecutar_cuaderno.py`.
+
+---
