@@ -498,3 +498,67 @@ Formato de cada entrada:
   IDDFS tampoco se aprecia aquí, porque la frontera de BFS no pasa de 12.
 
 ---
+
+## Etapa 6 — Búsqueda bidireccional (2026-09-23)
+
+### D-27 · BFS bidireccional por capas completas, equilibrada por tamaño de frontera
+
+- **Decisión:** dos BFS, desde el inicio y desde la meta. En cada paso se
+  expande la **capa completa** del lado con la frontera más pequeña; en caso
+  de empate, el de adelante. Cada lado tiene su propio diccionario
+  `alcanzados` (estado → nodo), y cada hijo nuevo se busca en el del otro
+  lado.
+- **Alternativas:** alternar un nodo de cada lado; alternar capas sin mirar
+  el tamaño; dos UCS.
+- **Por qué:** alternar nodos sueltos mezcla profundidades distintas dentro
+  de una misma frontera y complica el argumento de optimalidad (D-28). Elegir
+  el lado más pequeño es la forma de «expandir de forma equilibrada» que pide
+  el enunciado: gasta el trabajo donde crece menos. En la instancia resultan
+  49 capas desde el inicio y 10 desde la meta, porque la frontera de la meta
+  es más ancha.
+- **Unión:** la mitad de atrás se invierte, y cada acción suya se reemplaza
+  por su opuesta (`ACCION_INVERSA`). El costo total es `g_ad + g_at`, que
+  solo es correcto porque los costos son de arista y simétricos (D-23).
+  `verificar_resultado` recalcula el costo hacia adelante, así que una
+  asimetría o una acción mal invertida haría fallar la celda.
+- **Hallazgo:** en la instancia individual la búsqueda bidireccional expande
+  218 estados, el 88 % de los 249 de BFS. La ventaja O(b^(d/2)) supone una
+  ramificación que el laberinto perfecto no tiene.
+- **Expectativa corregida por la medición:** el primer docstring afirmaba
+  que, sin solución, «basta agotar el lado más pequeño». Es cierto que para
+  cuando se vacía una frontera, pero no que el trabajo se limite a ese lado.
+  Con el corredor cortado, la búsqueda bidireccional expande 95 estados
+  frente a 89 de BFS: 89 desde el inicio, que agota su componente, y 6 desde
+  la meta, en vano. El docstring se corrigió y la celda comprueba ese
+  desglose.
+
+### D-28 · El objetivo es el encuentro, detectado al generar; se reúnen todos los encuentros de la capa
+
+- **Decisión:** la búsqueda termina cuando un hijo recién generado ya está
+  alcanzado por el otro lado. Se completa la capa en curso, se reúnen todos
+  los puntos de encuentro y se elige el de menor longitud total (en empate,
+  el primero descubierto).
+- **Desvío respecto de la convención:** los demás algoritmos prueban la meta
+  al **extraer**. Aquí el objetivo no es un estado sino que dos regiones se
+  toquen, y esperar a extraer ese estado de alguna frontera solo añadiría
+  una capa de trabajo sin cambiar el resultado. Se documenta como excepción
+  deliberada.
+- **Lema de la capa:** con capas completas y detección al generar, todos los
+  encuentros de una capa miden exactamente *k + j + 1*, que es la distancia
+  óptima (demostración en el apartado 6.4 del cuaderno). Por tanto el primer
+  encuentro ya es óptimo, y reunir los demás cuesta una sola capa.
+- **Verificación empírica:** en 300 subgrafos aleatorios de rejillas
+  pequeñas con ciclos (semilla fija), la búsqueda bidireccional concuerda con
+  BFS en existencia de solución y en longitud. En los 71 casos con varios
+  encuentros en la capa final, todos medían lo mismo.
+- **Dos puntos de encuentro (caso límite de la sección 8):** en la rejilla
+  abierta 2×2, de `(0,0)` a `(1,1)`, los encuentros `(0,1)` y `(1,0)` se
+  detectan en la misma capa, ambos de longitud 2. Se elige `(0,1)` porque se
+  descubre primero en el orden N-E-S-O, y la unión da las acciones `E S`.
+- **Límite:** con costos no unitarios este algoritmo minimiza pasos, no
+  costo. En el grafo ponderado de 2×4 devuelve costo 17 donde UCS encuentra
+  12. Una versión óptima en costo requiere dos UCS y el criterio de parada
+  `tope_ad + tope_at ≥ μ`; no se implementa porque el enunciado solo exige
+  la optimalidad en costo a UCS.
+
+---
