@@ -933,3 +933,71 @@ Formato de cada entrada:
   absolutas de los algoritmos.
 
 ---
+
+## Etapa 14 — Preparación de la defensa (2026-09-23)
+
+### D-46 · Las preguntas de la defensa se responden con código ejecutable
+
+- **Decisión:** la sección 12 incluye respuestas breves a las doce preguntas
+  y una celda con una demostración por pregunta (P1–P9 y P11). Las variantes
+  incorrectas (marcar al expandir sin revisar, UCS que termina al generar la
+  meta, unión bidireccional sin invertir acciones) se escriben en esa celda,
+  marcadas como tales, y no se usan en ningún otro lugar.
+- **Por qué:** el enunciado anuncia preguntas al azar, modificaciones en
+  vivo y la reconstrucción de un fragmento de algoritmo. Tener cada
+  fenómeno ya ejecutable permite mostrarlo en segundos y modificarlo delante
+  del docente. Las variantes incorrectas son la forma más directa de
+  justificar una decisión: se ve qué pasa si no se toma.
+- **Medido en las demostraciones:**
+  - marcar al expandir sin revisar al extraer expande 49 estados frente a
+    15 en la rejilla abierta 4×4, y uno de ellos 10 veces;
+  - UCS que termina al generar devuelve costo 12 frente a 7;
+  - olvidar invertir las acciones de atrás rompe la condición 5 de validez;
+  - la meta múltiple solo requiere redefinir `es_meta` para cinco de los
+    siete algoritmos.
+
+---
+
+### D-47 · ERROR CORREGIDO — varias comprobaciones suponían la instancia original
+
+- **Qué se hizo:** para preparar la «modificación en vivo» de la defensa se
+  ejecutó el cuaderno completo, en kernels limpios, con dos cambios de
+  parámetros. En el escenario A: semilla 12345, inicio `(2,2)` y meta
+  `(17,21)`. En el escenario B: inicio `(9,12)` y meta `(10,13)`, a 8 pasos.
+- **Qué falló:** cinco comprobaciones que pasaban con la instancia original
+  (en lo que sigue, *d* es la profundidad de la solución):
+  1. El corredor cortado para el caso inalcanzable estaba en las posiciones
+     30–31 del camino. Con un camino más corto, `IndexError`.
+  2. «Con límite 2*d*, DLS expande lo mismo que DFS» solo vale si el límite
+     no se alcanza. Con *d* = 8, el límite 16 sí se alcanza.
+  3. «Sin solución, el lado del inicio agota su componente» solo vale si
+     esa componente es la más pequeña. En general se agota el lado cuya
+     frontera se vacía.
+  4. `repetidos ≠ expandidos − 1` con ciclos solo vale si la búsqueda toca
+     algún ciclo. Una BFS de 8 pasos puede no tocar ninguno.
+  5. La DLS de AIMA en el 3×3 usaba límite 4, que es la distancia exacta
+     solo con la semilla original. Con un límite mayor, al no controlar
+     ciclos, devuelve una caminata con idas y vueltas.
+  Además, con extremos a 8 pasos, el barro alcanzaba enseguida al inicio o a
+  la meta y el caso «pasos ≠ costo» no se construía. Y la tendencia de la
+  bidireccional, comprobada tamaño por tamaño, fallaba con otra semilla por
+  el ruido de 30 muestras.
+- **Corrección:** cada comprobación se reformuló como lo que realmente
+  afirma:
+  - el corte va en la mitad del camino (`CORREDOR_DE_CORTE`);
+  - DLS = DFS se exige solo si el límite no se alcanzó;
+  - el lado agotado se identifica comparando con el tamaño de su componente;
+  - la igualdad del árbol se contrasta con una BFS que recorre todo el grafo;
+  - el límite de AIMA es la profundidad real;
+  - el barro nunca cubre los extremos y, si no hay desvío posible, el caso
+    se construye entre las esquinas, informándolo;
+  - la tendencia de la bidireccional se comprueba sobre las 90 búsquedas de
+    cada topología.
+  Los dos escenarios pasan completos, y la ejecución original produce las
+  mismas cifras que antes.
+- **Lección:** un `assert` que solo se ha visto pasar con una instancia puede
+  estar comprobando una propiedad de esa instancia y no del algoritmo. Si el
+  enunciado anuncia cambios en vivo, el cuaderno debe probarse con cambios
+  antes de la defensa, no durante ella.
+
+---

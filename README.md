@@ -45,6 +45,14 @@ ejecuta correctamente en Python 3.13, comprobado con un `SearchProblem` mínimo.
 
 Todo resultado aleatorio depende de una **semilla explícita**; no hay estado global oculto.
 
+Para comprobar que el cuaderno se ejecuta completo en un kernel nuevo (unos 3 minutos,
+la mayor parte en el protocolo experimental de la sección 10):
+
+```bash
+python tools/ejecutar_cuaderno.py            # falla indicando la primera celda con error
+python tools/ejecutar_cuaderno.py --texto    # además imprime la salida de cada celda
+```
+
 ## Plan de trabajo por etapas
 
 Cada etapa cierra con un commit propio, de modo que el historial muestre el proceso.
@@ -65,7 +73,7 @@ Cada etapa cierra con un commit propio, de modo que el historial muestre el proc
 | 11 | Segunda familia de problemas: ciclos y costos no unitarios | ✅ |
 | 12 | Protocolo experimental (≥30 instancias) y gráficas obligatorias | ✅ |
 | 13 | Análisis teórico, conclusiones y referencias | ✅ |
-| 14 | Preparación de la defensa oral | 🚧 |
+| 14 | Preparación de la defensa oral | ✅ |
 
 ## Referencias
 
