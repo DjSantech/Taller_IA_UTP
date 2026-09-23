@@ -562,3 +562,60 @@ Formato de cada entrada:
   la optimalidad en costo a UCS.
 
 ---
+
+## Etapa 7 — Algoritmo de Lee y frente de onda (2026-09-23)
+
+### D-29 · Lee se implementa solo con etiquetas, sin nodos ni padres
+
+- **Decisión:** `lee` traduce el pseudocódigo literalmente. Usa un
+  diccionario `etiqueta[celda]` y dos listas, `frente_actual` y
+  `frente_siguiente`. El camino se reconstruye desde la meta bajando por
+  etiquetas decrecientes; en cada paso se toma el primer vecino, en orden
+  N-E-S-O, con etiqueta `k − 1`, y la acción hacia adelante es la inversa.
+- **Alternativas:** reutilizar `bfs` y mostrar sus niveles; guardar la
+  procedencia de cada celda, como permite el pseudocódigo («registrar
+  procedencia o dirección»).
+- **Por qué:** reutilizar BFS convertiría la afirmación «Lee es BFS» en una
+  tautología. Implementado aparte, que sus 253 etiquetas coincidan con la
+  profundidad que BFS obtiene hasta cada celda es una comprobación real entre
+  dos programas distintos. Reconstruir por etiquetas es la idea original de
+  Lee (1961): las etiquetas bastan y no hacen falta padres. Además su
+  corrección se demuestra con el mismo argumento inductivo del apartado 7.1.
+- **Parada entre frentes:** como dice el pseudocódigo, se termina el frente
+  en el que la meta recibe su etiqueta, pero no se procesa el frente de la
+  meta. Por eso Lee expande 244 estados y BFS 249: BFS saca de su cola las
+  celdas del nivel de la meta que entraron antes que ella. La celda comprueba
+  que `expandidos` es la suma de todos los frentes salvo el último.
+- **Métricas:** celda procesada = expandida; vecino examinado = generado;
+  vecino ya etiquetado = repetido. `frontera_maxima` es el frente más
+  grande, 11 en la instancia, alrededor del instante 49.
+- **Contra-experimento:** «Lee con costos», con la etiqueta
+  `etiqueta[u] + c(u, v)` asignada al primer contacto, deja 3 de 8 etiquetas
+  erróneas en el grafo ponderado de 2×4. `(1,1)` recibe 8 y su costo mínimo
+  es 6. Hace falta poder rebajar etiquetas y procesar en orden de costo, que
+  ya es UCS.
+
+### D-30 · La figura del frente de onda: una escala común y una sola tonalidad
+
+- **Decisión:** ocho paneles (2×4) en los instantes `round(i·d/7)`, con
+  i = 0..7, es decir 0, 8, 17, 25, 34, 42, 51 y 59. Cada celda alcanzada se
+  colorea por su instante de llegada con una rampa secuencial de un solo tono
+  (azul claro → oscuro); las no alcanzadas, en gris neutro fuera de la escala.
+  La escala va de 0 a *d* y es **la misma en los ocho paneles**, con una
+  única barra de color. El camino reconstruido aparece en naranja solo en el
+  último panel.
+- **Alternativas:** una rampa multicolor (tipo arcoíris), o una escala
+  propia por panel.
+- **Por qué:** el tiempo de llegada es una magnitud ordenada. Una rampa de un
+  solo tono se lee como «más oscuro = más tarde», mientras que un arcoíris
+  introduce saltos de tono que parecen fronteras y no lo son. Con una escala
+  por panel, el mismo color significaría instantes distintos en cada uno y la
+  comparación entre paneles se perdería.
+- **La figura no es la evidencia:** el enunciado no acepta imágenes como
+  prueba. La evidencia es el diccionario `ETIQUETA_LEE`, los frentes
+  `FRENTES_LEE` y el mapa de etiquetas impreso como texto con
+  `dibujar_laberinto`, la función cuya firma con `marcas` se diseñó en la
+  etapa 1 precisamente para esto. La imagen se guarda en
+  `resultados/lee_frente_de_onda.png`, que no se versiona porque se regenera.
+
+---
