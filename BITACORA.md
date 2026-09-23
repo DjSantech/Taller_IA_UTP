@@ -423,3 +423,78 @@ Formato de cada entrada:
   primer grafo ponderado del cuaderno.
 
 ---
+
+## Etapa 5 — Búsqueda limitada y profundización iterativa (2026-09-23)
+
+### D-24 · DLS controla repetidos sobre el camino actual, no con un conjunto global
+
+- **Decisión:** DLS es una búsqueda en **árbol** con control de ciclos: un
+  hijo se descarta solo si su estado ya está en el camino actual
+  (`en_camino`), y ese estado se libera al retroceder. Se implementa de forma
+  iterativa con una pila de pares `(nodo, iterador de acciones pendientes)`:
+  los hijos se generan de a uno y la pila **es** el camino, así que la
+  memoria es O(límite).
+- **Alternativas:** reutilizar el conjunto de alcanzados de BFS/DFS; un
+  diccionario `mejor_profundidad[s]` que permita reabrir un estado alcanzado
+  a menor profundidad; una versión recursiva.
+- **Por qué:** con un conjunto global, un estado alcanzado primero por una
+  rama profunda queda marcado, y al llegar a él después por un camino más
+  corto ya no se puede usar. Se pierden soluciones que sí caben en el límite.
+  `mejor_profundidad` lo arregla, pero cuesta O(|V|) de memoria y anula la
+  ventaja que justifica IDDFS. La versión iterativa evita el límite de
+  recursión de Python en límites grandes.
+- **Contra-experimento:** en una rejilla abierta de 2×4, de `(1,0)` a
+  `(1,3)` con límite exacto 3, el control por camino halla
+  `(1,0) (1,1) (1,2) (1,3)`. El control global visita `(0,0) (0,1) (0,2)
+  (1,1)`, deja `(1,1)` marcado a profundidad 3 y devuelve **corte**, una
+  respuesta falsa porque existe una solución de profundidad 3. El caso se
+  encontró buscando de forma exhaustiva en rejillas abiertas pequeñas: en
+  2×2, 2×3 y 3×3 no aparece ninguno con límite exacto.
+- **Predicción comprobada:** con un límite que nunca se alcanza, DLS en un
+  árbol recorre el mismo preorden N-E-S-O que la DFS de la etapa 3 y expande
+  **los mismos 297 estados**, aunque son dos implementaciones distintas.
+  Genera menos (562 frente a 597) porque produce los hijos de a uno y no
+  llega a construir los hermanos que DFS apila y nunca visita.
+- **Métricas:** un nodo que llega al límite se genera pero no se expande ni
+  entra en la pila, así que `frontera_maxima ≤ límite`. La primera redacción
+  del docstring decía `límite + 1`. La tabla mostró `DLS(58)` con frontera 58
+  y la cota se corrigió antes del commit.
+
+### D-25 · Corte y fracaso se distinguen en el propio resultado
+
+- **Decisión:** `ResultadoBusqueda` gana un campo `corte: bool = False`.
+  `encontrado = False, corte = True` significa «no hay solución dentro del
+  límite, pero algo quedó sin explorar». `encontrado = False,
+  corte = False` es un fracaso definitivo. `Metricas.resultado` fuerza
+  `corte = False` cuando hay solución, y `verificar_resultado` lo comprueba.
+- **Alternativas:** devolver un centinela aparte (una cadena `"corte"`, como
+  hace AIMA); devolver una tupla `(resultado, corte)`.
+- **Por qué:** el contrato exige que todos los algoritmos devuelvan el mismo
+  registro, y un centinela de otro tipo rompería esa uniformidad justo en
+  DLS. El campo tiene valor por omisión, así que los otros cinco algoritmos
+  no cambian. Es la información que IDDFS necesita para decidir si sigue.
+- **Criterio de corte:** el de AIMA, es decir, cualquier nodo que no es meta
+  y llega al límite. Es algo conservador: un callejón sin salida justo en el
+  límite cuenta como corte aunque no tenga nada debajo. Solo cuesta una
+  iteración extra antes de declarar el fracaso, y a cambio el criterio es
+  simple de enunciar y de defender.
+- **Predicción comprobada:** con la meta inalcanzable (un corredor cortado),
+  la componente del inicio llega a profundidad 32. IDDFS corta en los
+  límites 0..32 y declara fracaso en el 33: exactamente 34 iteraciones, sin
+  ningún tope externo.
+
+### D-26 · IDDFS se reporta con las métricas acumuladas de todas las iteraciones
+
+- **Decisión:** `expandidos`, `generados` y `repetidos` de IDDFS son la suma
+  de todas sus iteraciones, y `frontera_maxima` es el máximo.
+- **Por qué:** re-expandir los niveles superiores es el costo real de IDDFS.
+  Reportar solo la última iteración lo haría parecer más barato que BFS.
+- **Hallazgo:** en la instancia individual IDDFS expande 5 439 estados,
+  **21,8 veces** los 249 de BFS. El argumento clásico, un sobrecosto del
+  orden de *b/(b−1)*, supone una ramificación holgada. Un laberinto perfecto
+  es casi un pasillo: el número de estados a profundidad ≤ L crece más o
+  menos linealmente con L, y la suma de las iteraciones crece como L². Hay
+  que llevarlo al análisis teórico de la sección 11: la ventaja de memoria de
+  IDDFS tampoco se aprecia aquí, porque la frontera de BFS no pasa de 12.
+
+---
