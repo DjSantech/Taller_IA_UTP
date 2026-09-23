@@ -64,8 +64,8 @@ Cada etapa cierra con un commit propio, de modo que el historial muestre el proc
 | 10 | Pruebas de aceptación, casos límite y concordancia entre versiones | ✅ |
 | 11 | Segunda familia de problemas: ciclos y costos no unitarios | ✅ |
 | 12 | Protocolo experimental (≥30 instancias) y gráficas obligatorias | ✅ |
-| 13 | Análisis teórico, conclusiones y referencias | 🚧 |
-| 14 | Preparación de la defensa oral | ⬜ |
+| 13 | Análisis teórico, conclusiones y referencias | ✅ |
+| 14 | Preparación de la defensa oral | 🚧 |
 
 ## Referencias
 

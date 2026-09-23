@@ -908,3 +908,28 @@ Formato de cada entrada:
   que es lo que hace `tools/ejecutar_cuaderno.py`.
 
 ---
+
+## Etapa 13 — Análisis teórico, conclusiones y referencias (2026-09-23)
+
+### D-45 · Las cotas se contrastan con el factor de ramificación efectivo, no con el nominal
+
+- **Decisión:** la tabla teórica (11.1) se complementa con una celda que
+  estima, para cada BFS del protocolo, el factor de ramificación efectivo
+  *b\** (el de un árbol uniforme de profundidad *d* con N + 1 nodos,
+  definición de AIMA, resuelto por bisección). Sobre él se comprueban con
+  `assert` dos predicciones: IDDFS/BFS ≈ *d*/2 en árboles, y una ventaja
+  bidireccional que crece con los ciclos.
+- **Alternativas:** una tabla de complejidades sin conexión con los datos;
+  contrastar con *b* = 4, el grado máximo de una rejilla.
+- **Por qué:** el enunciado advierte que una tabla memorizada no recibe
+  puntaje completo. Con *b* = 4 las cotas del libro predicen explosiones que
+  no se observan. Con *b\** medido, entre 1,01 y 1,07, las mismas fórmulas
+  explican lo observado: IDDFS cuesta 0,40·*d* a 0,46·*d* veces BFS (la
+  predicción para *b* → 1 es *d*/2), y la bidireccional expande el 61–77 % de
+  BFS en lugar de la raíz cuadrada.
+- **Consecuencia:** las conclusiones (11.3) se apoyan en estos números.
+  Queda explícito que «IDDFS repite poco trabajo» y «la bidireccional ahorra
+  exponencialmente» son afirmaciones condicionadas a *b*, no propiedades
+  absolutas de los algoritmos.
+
+---
