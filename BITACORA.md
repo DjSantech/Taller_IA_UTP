@@ -772,3 +772,63 @@ Formato de cada entrada:
   manifestó en estas familias, pero la cota del visor sigue puesta.
 
 ---
+
+## Etapa 11 — Ciclos y costos (2026-09-23)
+
+### D-38 · Las transformaciones construyen grafos nuevos y se auditan con la sección 1
+
+- **Decisión:** `abrir_ciclos` enumera las paredes internas (pares
+  contiguos sin corredor, en orden canónico), toma una muestra con
+  `random.Random(semilla)` sobre la lista **ordenada** y devuelve una
+  `Instancia` nueva con el grafo congelado. `paredes_internas` solo produce
+  pares ortogonales dentro de la rejilla. Fuera del rango 5 %–12 % lanza
+  `ValueError`.
+- **Por qué:** así las cuatro propiedades exigidas se cumplen por
+  construcción, y además se **comprueban** con las funciones de la
+  auditoría: ortogonalidad, simetría, dominio, conectividad y ausencia de
+  lazos. La comprobación de aciclicidad, que en el árbol aprobaba, debe ahora
+  fallar: ese es el «ciclo comprobable». Muestrear sobre una lista ordenada,
+  y no sobre un conjunto, mantiene la reproducibilidad entre procesos (D-08).
+- **Medido:** 456 paredes internas; se abren 23 (5 %) y 46 (10 %), y |E| pasa
+  de 499 a 522 y a 545.
+
+### D-39 · ERROR CORREGIDO — el caso «menos pasos ≠ menor costo» se aceptaba con un criterio débil
+
+- **Decisión de fondo:** el costo se mantiene en la arista no dirigida (D-23)
+  pero se deriva de un terreno: los corredores que tocan una zona de barro,
+  un rombo alrededor del punto medio del camino más corto, cuestan 9, y los
+  demás cuestan 1. `construir_caso_pasos_vs_costo` busca el menor radio que
+  produce el caso.
+- **Qué se hizo primero:** el criterio de búsqueda era «el camino de UCS es
+  distinto del de BFS y más barato».
+- **Qué falló:** el `assert` posterior, que exigía que el camino barato
+  tuviera más pasos, detuvo la celda. Con radio 0 (barro en una sola celda),
+  UCS encontraba **otro camino de 47 pasos**, igual de corto, que esquivaba
+  esa celda. El criterio aceptaba un caso que no demuestra nada: dos caminos
+  distintos de igual longitud no separan «pasos» de «costo».
+- **Corrección:** el criterio exige que el camino de menor costo tenga
+  **estrictamente más pasos**. Con esa condición el caso encontrado es BFS
+  con 47 pasos y costo 143, frente a UCS con 51 pasos y costo 51.
+- **Lección:** la misma que en D-11, aplicada a la construcción de un
+  ejemplo. Un criterio que acepta el caso trivial no garantiza la propiedad
+  que se quiere mostrar. El `assert` redundante que lo detectó no era
+  redundante.
+
+### D-40 · Con ciclos, IDDFS explota: recorre caminos simples
+
+- **Hallazgo:** en la instancia con 10 % de ciclos, IDDFS expande 552 374
+  estados y tarda unos 5 s, frente a 425 estados de BFS. DLS con límite
+  exacto expande 14 417.
+- **Causa:** DLS controla repetidos solo sobre el camino actual (D-24). En
+  un árbol cada estado tiene un único camino simple desde el inicio; con
+  ciclos, el número de caminos simples crece de forma exponencial, y DLS
+  recorre cada uno. Es el precio de la memoria O(d): no recuerda lo ya
+  explorado por otra rama.
+- **Consecuencia para los experimentos:** IDDFS se medirá en todos los
+  árboles, pero con ciclos solo en el tamaño menor (15×15). Se informa como
+  resultado, no como limitación oculta: es la respuesta cuantitativa a «¿por
+  qué IDDFS repite trabajo y aun así puede ser conveniente?». Conviene cuando
+  la memoria es el recurso escaso y el espacio se parece a un árbol; aquí no
+  se da ninguna de las dos condiciones.
+
+---
