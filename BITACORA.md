@@ -619,3 +619,63 @@ Formato de cada entrada:
   `resultados/lee_frente_de_onda.png`, que no se versiona porque se regenera.
 
 ---
+
+## Etapa 8 — Versión SimpleAI (2026-09-23)
+
+### D-31 · El adaptador delega en `ProblemaLaberinto`
+
+- **Decisión:** `LaberintoSimpleAI(SearchProblem)` no reimplementa nada.
+  `actions`, `result`, `is_goal` y `cost` llaman a los métodos de
+  `ProblemaLaberinto`. El estado inicial es la tupla `(fila, columna)` y se
+  usa siempre `graph_search=True`.
+- **Alternativas:** escribir de nuevo las acciones sobre el grafo dentro del
+  adaptador.
+- **Por qué:** el enunciado exige que las tres versiones trabajen sobre el
+  mismo grafo, las mismas acciones y los mismos costos. Con una sola
+  formulación eso se cumple por construcción. Cualquier diferencia de
+  métricas que aparezca es entonces de la biblioteca, no del modelado, y ese
+  es el diagnóstico que pide la sección 10.
+
+### D-32 · Métricas con un visor propio y tiempo en una ejecución aparte
+
+- **Decisión:** `ContadorSimpleAI` implementa `event(nombre, *params)` y
+  traduce los eventos de `_search` al contrato. `repetidos` no tiene evento:
+  se deduce como *generados − insertados*, y los insertados salen de la
+  variación del tamaño de la frontera entre dos iteraciones. El tiempo se
+  mide en una segunda ejecución sin visor.
+- **Alternativas:** heredar de `BaseViewer`; llamar a `_search` con una
+  frontera propia instrumentada; parchear la biblioteca.
+- **Por qué:** parchear está prohibido. `_search` es privada, y depender de
+  su firma ataría el cuaderno a un detalle interno. `BaseViewer` convierte la
+  frontera a texto en cada iteración, un costo inútil aquí. El visor es el
+  mecanismo público que la biblioteca ofrece para esto. Sobre el tiempo: con
+  un visor, SimpleAI llama a `fringe.sorted()` en cada iteración aunque el
+  visor no use el resultado, y en UCS eso es O(n log n) por iteración. Medir
+  el tiempo con visor atribuiría a la biblioteca un costo que no tiene.
+- **Límite conocido:** en UCS, un reemplazo en la frontera deja el tamaño
+  igual y se cuenta como repetido. Queda documentado, no oculto.
+- **Validación:** el BFS de SimpleAI coincide con el de la Versión 1 en las
+  cuatro métricas (249, 506, 248, 12), y su DFS coincide exactamente con
+  nuestra DFS con la pila sin invertir (228 expandidos). Si la deducción de
+  insertados estuviera mal, estas igualdades no se cumplirían.
+
+### D-33 · Dos defectos de SimpleAI en búsqueda limitada, documentados y no corregidos
+
+- **Hallazgo 1:** con `graph_search=True`, `limited_depth_first` guarda en
+  `memory` todo estado extraído, de forma global. Es el defecto que la
+  etapa 5 descartó para la Versión 1 (D-24). El caso de la etapa 5 no lo
+  dispara, porque SimpleAI explora en orden O-S-E-N. Una búsqueda exhaustiva
+  sobre rejillas abiertas de 2×3 a 4×4 no halló ningún fallo con límite
+  exacto, pero sí con límites mayores. En la 2×4 abierta, de `(0,0)` a
+  `(0,3)` (distancia 3), SimpleAI encuentra la meta con límite 3 y **la
+  pierde con límite 4**.
+- **Hallazgo 2:** `iterative_limited_depth_first` repite `while not
+  solution` y no distingue corte de fracaso. Con la meta inalcanzable no
+  termina. Se demostró deteniéndolo desde el visor tras |V| + 2 = 502
+  ejecuciones; la Versión 1 declara el fracaso en 34.
+- **Decisión:** no se corrige la biblioteca (está prohibido modificarla) ni
+  se esconde el defecto. Se documenta, se mide y se evita en los
+  experimentos: IDDFS de SimpleAI solo se ejecuta sobre instancias con
+  solución, y DLS con límite igual a la profundidad de BFS.
+
+---

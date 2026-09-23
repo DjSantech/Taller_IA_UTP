@@ -57,8 +57,8 @@ Cada etapa cierra con un commit propio, de modo que el historial muestre el proc
 | 5 | Búsqueda limitada en profundidad (DLS) y profundización iterativa (IDDFS) | ✅ |
 | 6 | Búsqueda bidireccional | ✅ |
 | 7 | Algoritmo de Lee y visualización del frente de onda | ✅ |
-| 8 | Versión SimpleAI e instrumentación de métricas | 🚧 |
-| 9 | Versión AIMA-Python e instrumentación de métricas | ⬜ |
+| 8 | Versión SimpleAI e instrumentación de métricas | ✅ |
+| 9 | Versión AIMA-Python e instrumentación de métricas | 🚧 |
 | 10 | Pruebas de aceptación, casos límite y concordancia entre versiones | ⬜ |
 | 11 | Segunda familia de problemas: ciclos y costos no unitarios | ⬜ |
 | 12 | Protocolo experimental (≥30 instancias) y gráficas obligatorias | ⬜ |
