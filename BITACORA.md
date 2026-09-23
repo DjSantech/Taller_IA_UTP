@@ -734,3 +734,41 @@ Formato de cada entrada:
   una familia, no un algoritmo.
 
 ---
+
+## Etapa 10 — Pruebas de aceptación (2026-09-23)
+
+### D-37 · Una batería sobre tres familias de instancias, con contra-pruebas
+
+- **Decisión:** las pruebas se escriben como funciones que devuelven
+  `(aprobada, detalle)` y se registran con un decorador. Un informe final las
+  ejecuta todas y hace `assert` sobre el conjunto. Se aplican a 46
+  instancias con semilla fija: 14 árboles, 16 con ciclos y 16 ponderados.
+  `ejecutar_todas` corre los algoritmos de las tres versiones sobre cada una.
+- **Alternativas:** `unittest` o `pytest`; probar solo la instancia
+  individual.
+- **Por qué:** el entregable es un cuaderno que debe ejecutarse de arriba
+  abajo. Un informe en la propia celda es la evidencia verificable que pide
+  el enunciado, sin depender de un ejecutor externo. Probar solo la instancia
+  individual es insuficiente: es un árbol, y en un árbol la mitad de las
+  concordancias (BFS ≤ DFS, UCS ≤ BFS) se cumplen como igualdad y **no
+  pueden fallar**.
+- **Contra-pruebas (D-11):**
+  - cinco mutaciones de un resultado válido, cada una pensada para romper
+    una sola condición, que la validación debe detectar por esa condición
+    (185 detectadas);
+  - la unicidad del camino, que debe dejar de cumplirse con ciclos (en 10
+    instancias no se cumple);
+  - las desigualdades de concordancia, que deben ser estrictas al menos una
+    vez (en 11 casos DFS da un camino más largo que BFS, y en 75
+    comparaciones UCS es más barata).
+- **Validez separada por condición:** `condiciones_de_validez` devuelve la
+  lista de condiciones incumplidas, en lugar de un único `assert`, para que un
+  fallo indique **cuál** se rompió. Es la herramienta de la pregunta 11 de la
+  defensa: diagnosticar una discrepancia.
+- **Resultado:** 15 de 15 pruebas aprobadas y 768 resultados válidos. La
+  bidireccional MM de AIMA concuerda en costo óptimo con las tres UCS en las
+  46 instancias, incluidas las inalcanzables (infinito). La IDDFS de SimpleAI
+  terminó en todas las instancias con solución: el defecto D-33 no se
+  manifestó en estas familias, pero la cota del visor sigue puesta.
+
+---
