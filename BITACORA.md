@@ -281,3 +281,77 @@ Formato de cada entrada:
   prueba en la sección 9, donde hay ciclos y costos.
 
 ---
+
+## Etapa 3 — Contrato, núcleo de búsqueda en grafo, BFS y DFS (2026-09-23)
+
+### D-17 · BFS y DFS son una sola función con la frontera inyectada
+
+- **Decisión:** `busqueda_en_grafo(problema, frontera, ...)` implementa el
+  bucle una única vez. `bfs` le pasa una `FronteraFIFO` (un `deque`) y `dfs`
+  una `FronteraLIFO` (una lista usada como pila). Las dos clases exponen la
+  misma interfaz: `agregar_hijos`, `extraer` y `len`.
+- **Alternativas:** dos funciones casi idénticas; o una sola con
+  `if politica == "BFS"` repartidos por el cuerpo.
+- **Por qué:** el enunciado pide que «la diferencia no quede dispersa por todo
+  el programa». Con la frontera inyectada la diferencia entre BFS y DFS está
+  en dos clases de diez líneas y en ningún otro sitio. Además, cualquier
+  corrección al control de repetidos o a las métricas vale para las dos a la
+  vez. Con dos copias, una corrección aplicada a una sola haría que la
+  comparación entre ambas midiera el error y no la estrategia.
+- **Consecuencia:** UCS **no** reutiliza este núcleo. Su control de repetidos
+  es distinto (mejor costo y entradas obsoletas, no «ya alcanzado») y forzarlo
+  en la misma función exigiría justo los `if` dispersos que se querían evitar.
+
+### D-18 · La pila apila los hijos en orden inverso
+
+- **Decisión:** `FronteraLIFO.agregar_hijos` apila los hijos invertidos, de
+  modo que el primero en salir es el de la primera acción (N).
+- **Por qué:** una pila devuelve primero lo último que entró. Sin invertir, la
+  DFS exploraría en orden O-S-E-N y el orden fijo N-E-S-O (D-14) dejaría de
+  describir lo que hace el algoritmo. La inversión vive en la frontera, no en
+  el núcleo, porque es un detalle de la disciplina LIFO.
+- **Evidencia:** contra-experimento en la 3x3. Con la pila invertida DFS
+  extrae `(0,0) (0,1) (0,2) (1,1) (1,2) (2,2)`; con una pila sin invertir
+  extrae `(0,0) (1,0) (2,0) (2,1) (0,1) (1,1) (1,2) (2,2)`, dos estados más.
+  El cuaderno exige que ambos órdenes difieran.
+
+### D-19 · Marcar al generar en BFS y DFS; prueba de objetivo al extraer
+
+- **Decisión:** un estado entra en `alcanzados` en el momento en que se genera
+  por primera vez. Los hijos repetidos se construyen, se cuentan como
+  generados y se descartan. La meta se reconoce al **extraerla**, no al
+  generarla.
+- **Alternativas:** marcar al expandir (la frontera puede contener
+  duplicados); en BFS, probar el objetivo al generar, lo que ahorra un nivel.
+- **Por qué:** marcar al generar acota la frontera por |V| y en BFS es seguro,
+  porque la cola extrae en orden de profundidad no decreciente. En DFS cambia
+  el recorrido respecto de una DFS recursiva **solo si hay ciclos**; en el
+  laberinto perfecto coinciden. La prueba al generar habría reducido los
+  expandidos de BFS, pero el enunciado fija la convención y las métricas de
+  los siete algoritmos tienen que ser comparables.
+- **Predicción comprobada:** en un árbol, con marcado al generar, cada nodo
+  expandido salvo la raíz genera exactamente un repetido: su padre. Por tanto
+  `repetidos_descartados = expandidos − 1`. Se cumple para BFS (248 = 249 − 1)
+  y DFS (296 = 297 − 1) en la instancia. Si fallara, el laberinto tendría un
+  ciclo o el control de repetidos estaría mal. En la sección 9, con ciclos, la
+  igualdad debe **dejar** de cumplirse.
+
+### D-20 · Valores centinela del fracaso y definición de «generado»
+
+- **Decisión:** sin solución se devuelve `costo = ∞` y `profundidad = −1`. El
+  nodo inicial no cuenta como generado.
+- **Por qué:** `0` no sirve como marca de fracaso, porque es la profundidad
+  real del caso *inicio = meta*. Con `0` las dos situaciones serían
+  indistinguibles en una tabla. `∞` es además el costo que usa AIMA para el
+  nodo de fracaso, y hace que `min()` sobre costos funcione sin casos
+  especiales. En cuanto a *generado*, el enunciado lo define como «nodo
+  sucesor construido» y la raíz no es sucesor de nadie. Así *inicio = meta* da
+  0 expandidos y 0 generados, como se comprueba en el cuaderno.
+- **Hallazgo en revisión:** la primera versión de `verificar_resultado`
+  exigía `expandidos ≤ |V|`. Es cierto en la búsqueda en grafo, pero IDDFS
+  (etapa 5) vuelve a expandir los mismos estados en cada iteración y lo
+  violaría de forma legítima. Se detectó al releer el código antes de
+  ejecutarlo: la cota se trasladó a las pruebas de BFS y DFS, que es donde
+  vale.
+
+---
