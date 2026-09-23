@@ -355,3 +355,71 @@ Formato de cada entrada:
   vale.
 
 ---
+
+## Etapa 4 — Búsqueda de costo uniforme (2026-09-23)
+
+### D-21 · UCS con eliminación perezosa y desempate por orden de inserción
+
+- **Decisión:** la frontera es un montículo `heapq` de tuplas
+  `(g, orden, nodo)`. `mejor_costo[s]` guarda el menor `g` conocido de cada
+  estado, y un hijo entra a la frontera solo si lo mejora. La entrada vieja
+  de un estado mejorado no se borra: queda **obsoleta** y se descarta al
+  extraerla, porque su `g` supera a `mejor_costo[s]`. La prueba de objetivo
+  se hace al extraer.
+- **Alternativas:** *decrease-key* sobre la entrada existente, que `heapq`
+  no ofrece y que exigiría buscarla en O(n) o mantener un índice aparte; un
+  conjunto de «cerrados» además de `mejor_costo`.
+- **Por qué:** la eliminación perezosa es el esquema que pide el propio
+  pseudocódigo («ignorar entradas obsoletas»). Cuesta a lo sumo una entrada
+  por arista mejorada, O(|E| log |E|) en total, y no necesita otra estructura.
+  `orden`, un contador creciente, cumple dos funciones. Desempata los `g`
+  iguales en orden de inserción, que es determinista. Y evita que `heapq`,
+  ante dos `g` iguales, intente comparar dos `Nodo`, que no definen `<`: sin
+  el contador el primer empate lanzaría `TypeError`.
+- **Métricas:** una entrada obsoleta descartada cuenta en
+  `repetidos_descartados`, igual que un hijo que no mejora. Cada hijo
+  generado se descarta a lo sumo una vez, así que se mantiene
+  `repetidos ≤ generados`. `frontera_maxima` incluye las entradas obsoletas,
+  porque ocupan memoria de verdad. En el grafo ponderado de prueba UCS llega a
+  4 y BFS a 3.
+- **Contra-experimento:** una frontera ordenada por `g` dentro de
+  `busqueda_en_grafo`, que marca al generar, devuelve una solución válida de
+  costo 17 en lugar de 12. Justifica D-17: UCS no puede compartir el núcleo
+  de BFS y DFS, porque su diferencia está en el control de repetidos, no solo
+  en la frontera.
+
+### D-22 · Predicción: con costo unitario, UCS recorre como BFS
+
+- **Predicción:** con costo unitario `g` coincide con la profundidad, y el
+  desempate FIFO del contador reproduce el orden de la cola de BFS. Por tanto
+  UCS debe expandir **los mismos estados en el mismo orden** que BFS. En un
+  árbol, además, no puede haber entradas obsoletas, porque nunca hay dos
+  caminos hacia un mismo estado.
+- **Resultado:** se cumple. Ambos expanden 249 estados en el mismo orden y
+  UCS no registra ninguna entrada obsoleta. UCS tarda algo más (montículo:
+  O(log n) por operación, frente a O(1) de la cola).
+- **Consecuencia:** si el desempate fuera LIFO, o por estado, UCS encontraría
+  el mismo costo pero expandiría otros nodos. La igualdad de métricas con BFS
+  depende de una decisión de implementación, no solo de la teoría, y así debe
+  explicarse en el análisis de la sección 11.
+
+### D-23 · Los costos se asignan a aristas no dirigidas (decisión provisional)
+
+- **Decisión:** en el grafo de prueba el costo pertenece al **corredor**: se
+  indexa por `frozenset({s, s'})`, así que `c(s, a, s') = c(s', a', s)`.
+  `costo_por_arista` convierte ese diccionario en la función `c(s, a, s')`
+  que recibe `ProblemaLaberinto`.
+- **Alternativas:** costo por **celda** («terreno»: se paga al entrar); costo
+  por **acción** (por ejemplo, subir cuesta más que bajar).
+- **Por qué:** con costo por celda o por acción, ir y volver por el mismo
+  corredor costaría distinto. La búsqueda bidireccional (etapa 6) recorre las
+  aristas **al revés** desde la meta, y con costos asimétricos tendría que
+  usar los costos del grafo inverso, que es una fuente de error que no hace
+  falta abrir. Con costos por arista el grafo sigue siendo simétrico también
+  en costos, y la comprobación de simetría de la etapa 1 sigue significando
+  lo mismo.
+- **Consecuencia:** la sección 9 debe mantener esta decisión en las tres
+  versiones, como exige el enunciado. Se registra ahora porque ya la usa el
+  primer grafo ponderado del cuaderno.
+
+---
