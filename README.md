@@ -51,8 +51,8 @@ Cada etapa cierra con un commit propio, de modo que el historial muestre el proc
 |---|---|---|
 | 0 | Estructura del repositorio, entorno y bitácora | ✅ |
 | 1 | Auditoría del generador Hunt-and-Kill + pruebas de invariantes | ✅ |
-| 2 | Instancia individual reproducible y formulación formal del espacio de estados | 🚧 |
-| 3 | Contrato `ResultadoBusqueda`, núcleo de búsqueda en grafo, DFS y BFS | ⬜ |
+| 2 | Instancia individual reproducible y formulación formal del espacio de estados | ✅ |
+| 3 | Contrato `ResultadoBusqueda`, núcleo de búsqueda en grafo, DFS y BFS | 🚧 |
 | 4 | Búsqueda de costo uniforme (UCS) con entradas obsoletas | ⬜ |
 | 5 | Búsqueda limitada en profundidad (DLS) y profundización iterativa (IDDFS) | ⬜ |
 | 6 | Búsqueda bidireccional | ⬜ |

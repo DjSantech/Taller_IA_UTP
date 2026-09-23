@@ -189,3 +189,95 @@ Formato de cada entrada:
   concordancia entre versiones incluirá un caso donde deba discrepar.
 
 ---
+
+## Etapa 2 — Instancia individual y formulación formal (2026-09-23)
+
+### D-12 · Una sola fuente de parámetros, validada antes de generar
+
+- **Decisión:** semilla, filas, columnas, inicio y meta se definen una única
+  vez, en la celda de la sección 2, y se agrupan en un objeto `INSTANCIA`
+  inmutable. Toda sección posterior lee `INSTANCIA`; ninguna repite un valor.
+  La semilla y las dimensiones se **derivan** del código estudiantil con la
+  regla literal del enunciado, en vez de escribirse a mano.
+- **Alternativas:** constantes sueltas repetidas en cada sección, o escribir
+  directamente `97950, 20, 25`.
+- **Por qué:** el enunciado anuncia una **modificación en vivo** de inicio,
+  meta, semilla o costo durante la defensa. Con valores repetidos, un cambio
+  en un sitio y no en otro produce resultados incoherentes sin ningún error
+  visible. `construir_instancia` además valida antes de generar: un inicio
+  escrito como lista, fuera de la rejilla o en un cuadrante no opuesto falla
+  ahí con un mensaje claro, no diez celdas más abajo dentro de un buscador.
+- **Verificado:** `[3, 4]` como lista, meta `(3, 20)` en el mismo lado y meta
+  `(20, 20)` fuera de rango se rechazan con `ValueError`; una instancia
+  `21 x 23` con semilla 12345 se construye y se resuelve sin tocar otra celda.
+- **Consecuencia:** los ejemplos del cuaderno no pueden suponer propiedades de
+  **esta** instancia. La demostración de una acción bloqueada por pared busca
+  una celda que la tenga en vez de asumir que el inicio la tiene; la
+  contra-prueba del validador invierte la primera acción, que falla con
+  cualquier inicio.
+
+### D-13 · El grafo compartido se congela
+
+- **Decisión:** el diccionario que devuelve el generador se convierte en un
+  `MappingProxyType` de `frozenset`. Cualquier intento de modificarlo lanza
+  una excepción.
+- **Alternativas:** confiar en que ningún algoritmo lo modifique, o entregar
+  una copia a cada algoritmo.
+- **Por qué:** las tres versiones y los siete algoritmos comparten el mismo
+  grafo, como exige el enunciado. Un `grafo[celda].discard(...)` accidental en
+  un algoritmo alteraría en silencio las métricas de todos los que corran
+  después, y la comparación final dejaría de ser justa. Copiar por algoritmo
+  evita el contagio pero no detecta el error; congelar hace las dos cosas.
+- **Consecuencia:** las transformaciones de la sección 9 (abrir paredes,
+  asignar costos) deberán construir un grafo **nuevo** a partir de este, que
+  es lo que el enunciado pide de todos modos («sin modificar el generador»).
+
+### D-14 · Las acciones son direcciones, en orden fijo N, E, S, O
+
+- **Decisión:** una acción es una dirección `N`, `E`, `S` u `O`, no la celda
+  destino. `ACCIONES(s)` las devuelve siempre en ese orden, filtrando las que
+  tienen pared; no se itera `grafo[s]`.
+- **Alternativas:** usar la celda destino como acción; iterar el conjunto de
+  vecinos en el orden que dé Python.
+- **Por qué:** el contrato de la sección 4 pide `camino` y `acciones` por
+  separado. Si las acciones fueran celdas, `acciones` sería `camino[1:]`
+  repetido. En cuanto al orden, el de un `set` de tuplas es reproducible
+  (D-08) pero depende de la historia interna del generador y **no se puede
+  explicar**. Con un orden declarado, «DFS prueba primero el norte» es una
+  afirmación verificable, y las tres versiones desempatan igual. Sin eso, las
+  pruebas de concordancia de la sección 8 compararían métricas que difieren
+  por el orden de los vecinos y no por el algoritmo.
+- **Consecuencia:** SimpleAI y AIMA-Python recibirán adaptadores sobre
+  `ProblemaLaberinto` que respeten este orden, en lugar de una segunda
+  formulación escrita a mano.
+
+### D-15 · Inicio `(3, 4)` y meta `(16, 20)`; regla de cuadrantes declarada
+
+- **Decisión:** puntos interiores en los cuadrantes noroeste y sureste, no las
+  esquinas. Dos celdas están en cuadrantes opuestos si difieren en ambos ejes.
+  Con una dimensión impar, la línea central pertenece a la mitad norte u oeste
+  (`2*i < n`).
+- **Por qué:** la sección 1 ya auditó el recorrido esquina a esquina
+  `(0, 0) → (19, 24)`; repetirlo no aportaría un caso nuevo. Con 25 columnas la
+  columna 12 no pertenece a ninguna mitad de forma natural, así que el
+  desempate se declara en vez de dejarlo implícito, y los puntos elegidos
+  están lejos de las líneas centrales para no depender de él.
+- **Medido:** el camino único entre ambos tiene 60 celdas (profundidad 59), y
+  la auditoría completa de la instancia con esos extremos da 11/11.
+
+### D-16 · Un camino de referencia obtenido sin buscadores
+
+- **Decisión:** la sección 2 calcula `CAMINO_REFERENCIA` con `caminos_simples`,
+  la utilidad de verificación de la sección 1, y la sección 3 lo valida
+  formalmente con `validar_solucion`.
+- **Por qué:** como el laberinto es un árbol, existe un único camino simple, y
+  la búsqueda en grafo nunca repite estados en el camino que devuelve. Por lo
+  tanto **todo algoritmo completo de la Versión 1 debe devolver exactamente
+  este camino**, aunque lo encuentre expandiendo nodos distintos. Eso
+  proporciona un oráculo independiente de los buscadores (D-07) para las
+  pruebas de la sección 8.
+- **Consecuencia:** en el laberinto perfecto los algoritmos solo pueden
+  diferir en sus métricas, no en la solución. La optimalidad solo se pondrá a
+  prueba en la sección 9, donde hay ciclos y costos.
+
+---

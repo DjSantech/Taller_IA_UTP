@@ -23,3 +23,6 @@ resultados/*.png
 # Sistema operativo
 Thumbs.db
 desktop.ini
+
+# Apuntes personales de estudio para la defensa (no forman parte de la entrega)
+estudio/
