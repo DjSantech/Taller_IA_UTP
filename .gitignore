@@ -16,6 +16,8 @@ __pycache__/
 resultados/*.csv
 resultados/*.png
 resultados/*.gif
+resultados/*.json
+resultados/*.log
 
 # Ajustes locales del editor (rutas absolutas de esta maquina)
 .vscode/
