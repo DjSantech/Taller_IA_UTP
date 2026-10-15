@@ -1,0 +1,11 @@
+# Dependencias del taller 2 — versiones verificadas sobre Python 3.13.7 (Windows 11).
+# La reproducibilidad incluye las versiones de las bibliotecas, no solo las semillas.
+
+tsplib95==0.7.1        # lectura de instancias TSPLIB y pesos oficiales (no resuelve nada)
+numpy==2.5.4           # medianas, dispersiones y matrices para graficas
+matplotlib==3.11.2     # figuras obligatorias y animacion
+pillow==12.3.0         # escritura de la animacion GIF
+ipykernel==7.4.0       # kernel de Jupyter asociado al entorno virtual
+nbformat==5.11.1       # tools/: construir y validar el .ipynb
+nbclient==0.11.0       # tools/: ejecutar el cuaderno en un kernel nuevo
+pytest==9.1.1          # pruebas unitarias de los modulos
