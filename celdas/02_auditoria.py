@@ -1,4 +1,5 @@
-# ===== Auditoría independiente de distancias y de las rutas óptimas oficiales =====
+# ===== Auditoría independiente de distancias y de las rutas óptimas oficiales (sección 3) =====
+# Se ejecuta aquí, justo después del modelo común de la sección 4, porque usa `tour_cost` y `is_valid_tour`.
 import itertools
 
 def _euc2d(a, b):                          # fórmula EUC_2D escrita aparte del lector

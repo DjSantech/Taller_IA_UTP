@@ -1,0 +1,16 @@
+### 14.F A tiempo igual el ranking cambia (preguntas 9 y 10)
+
+Hasta aquí comparé a **igual número de evaluaciones** (30000), que es la aproximación de esfuerzo que propone el enunciado. Pero una evaluación no cuesta lo mismo en cada método: HC y SA calculan un delta con 4 pesos (O(1)); GA calcula el costo completo de cada individuo (O(n)) y además aplica operadores. Para ver el efecto, repetí la comparación con **2 segundos de reloj por ejecución** (10 semillas por celda, parámetros ya congelados; resultados aparte de las tablas principales, y SA dimensionado con una corrida piloto para repartir su calendario en ese tiempo).
+
+**Lo que cambia.** En 2 s, HC procesa del orden de **tres millones de evaluaciones**, SA cerca de un millón y GA unas cincuenta mil: **una diferencia de unas 60 veces entre HC y GA en evaluaciones por segundo**. Con ese tiempo HC con reinicios completa decenas de ascensos y se queda con el mejor: su gap mediano pasa del 20 %–76 % de la escala B a **por debajo de ≈ 0,5 % en las cuatro instancias**, y en alguna semilla llega al óptimo oficial (en la ejecución registrada, en las cuatro instancias). SA también queda por debajo de 1 % de gap mediano. GA, en cambio, apenas se mueve (entre ≈ 4 % y ≈ 8 %), porque dos segundos solo le alcanzan para unas cincuenta mil evaluaciones.
+
+| Criterio de comparación | Orden por gap mediano |
+|---|---|
+| Igual número de evaluaciones (30000) | SA < GA ≪ HC (con o sin reinicios) |
+| Igual tiempo (2 s) | HC con reinicios ≈ SA ≪ GA |
+
+**Lectura.** HC pasó de último a primero (o empatado con SA) sin cambiar una línea del algoritmo: lo que cambió fue **qué se midió**. Por eso los resultados de la escala B no dicen «SA es mejor algoritmo que HC», sino «con 30000 evaluaciones, SA aprovecha mejor ese presupuesto». Y que GA baje más rápido al principio por evaluaciones (figura 2) no compensa que cada evaluación suya cueste unas 60 veces más tiempo que una de HC.
+
+**Pregunta 10 — si dispongo de dos segundos, ¿qué elegiría según mis datos?** HC con reinicios o SA, que en el experimento anterior quedan por debajo del 1 % de gap mediano en las cuatro instancias; y no GA. Con 10 semillas no puedo declarar un ganador entre ambos. Las diferencias prácticas son otras: HC con reinicios no tiene temperatura ni calendario que ajustar (menos parámetros), mientras que SA necesita conocer el presupuesto de antemano para repartir el enfriamiento (por eso lo dimensioné con una corrida piloto). **Si necesito demostrar optimalidad,** solo A\* y RBFS dan certificado, y en mis datos solo lo consiguen hasta k = 12; en las instancias completas ninguno termina en 30 s. Con estas implementaciones, la demostración de optimalidad de una instancia de 48 ciudades **no está a mi alcance**; lo que puedo ofrecer es una ruta con gap pequeño y sin certificado.
+
+**Límites.** Los tiempos dependen de que la implementación esté en Python y de este equipo; en otro lenguaje o con otra vecindad el factor entre HC y GA cambiaría. Los resultados de reloj varían ligeramente entre ejecuciones (los costos de las corridas por evaluaciones son idénticos entre ejecuciones; estas, no). Y 10 semillas por celda permiten afirmar el orden de magnitud, no diferencias finas entre HC con reinicios y SA.
