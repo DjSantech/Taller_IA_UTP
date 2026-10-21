@@ -16,7 +16,7 @@
 
 **Políticas de desempate.** A\*: se extrae el nodo con menor `f`; si empatan, el de menor `h` (más cercano a la meta) y después el contador de inserción (determinista). RBFS: orden por `(f, h)` con desempate estable por orden de generación. HC: gana el primer vecino con el mejor delta estricto. GA: torneo por costo mínimo; ante un empate gana el primer participante sorteado.
 
-**Decisiones.** Están todas en `BITACORA.md`, con sus alternativas, motivos y consecuencias, y con los errores que cometí y corregí (D-09 numeración de nodos, D-13 contraejemplo de la clave de estado, A-09 el `max` de RBFS, entre otros).
+**Decisiones.** Están todas en `BITACORA.md`, con sus alternativas, motivos y consecuencias, y con los errores que cometimos y corregimos (D-09 numeración de nodos, D-13 contraejemplo de la clave de estado, A-09 el `max` de RBFS, entre otros).
 
 **Ayuda externa declarada.** Usamos un asistente de IA (**Claude**, mediante Claude Code) para programar los módulos, escribir las pruebas, ejecutar los experimentos y redactar estos apuntes; el trabajo se repartió entre agentes en paralelo por módulo y nosotros revisamos los resultados. Además usamos: `tsplib95` (lectura de instancias y pesos oficiales, sin resolver nada), las páginas de TSP Solve y de TSPLIB y el cuaderno de Peter Norvig sobre TSP como lectura de apoyo, y el pseudocódigo de AIMA para RBFS. Ninguna búsqueda ni optimización delega en SimpleAI, DEAP ni un solver. Ambos integrantes podemos explicar y modificar cualquier fragmento durante la sustentación; para eso preparamos guías de estudio por etapa.
 
