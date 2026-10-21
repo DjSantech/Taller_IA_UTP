@@ -1,6 +1,6 @@
 ### A. Integrantes, entorno y decisiones (completado)
 
-**Integrante:** Santiago (trabajo individual; el enunciado permite ajustar la modalidad).
+**Integrantes:** Santiago y Januar Mena (trabajo en pareja, la modalidad que propone el enunciado).
 
 **Presupuestos y límites congelados** (todos viven en `FROZEN`, en la sección 14):
 
@@ -18,6 +18,6 @@
 
 **Decisiones.** Están todas en `BITACORA.md`, con sus alternativas, motivos y consecuencias, y con los errores que cometí y corregí (D-09 numeración de nodos, D-13 contraejemplo de la clave de estado, A-09 el `max` de RBFS, entre otros).
 
-**Ayuda externa declarada.** Usé un asistente de IA (**Claude**, mediante Claude Code) para programar los módulos, escribir las pruebas, ejecutar los experimentos y redactar estos apuntes; el trabajo se repartió entre agentes en paralelo por módulo y yo revisé los resultados. Además usé: `tsplib95` (lectura de instancias y pesos oficiales, sin resolver nada), las páginas de TSP Solve y de TSPLIB y el cuaderno de Peter Norvig sobre TSP como lectura de apoyo, y el pseudocódigo de AIMA para RBFS. Ninguna búsqueda ni optimización delega en SimpleAI, DEAP ni un solver. Puedo explicar y modificar cualquier fragmento durante la sustentación; para eso preparé guías de estudio por etapa.
+**Ayuda externa declarada.** Usamos un asistente de IA (**Claude**, mediante Claude Code) para programar los módulos, escribir las pruebas, ejecutar los experimentos y redactar estos apuntes; el trabajo se repartió entre agentes en paralelo por módulo y nosotros revisamos los resultados. Además usamos: `tsplib95` (lectura de instancias y pesos oficiales, sin resolver nada), las páginas de TSP Solve y de TSPLIB y el cuaderno de Peter Norvig sobre TSP como lectura de apoyo, y el pseudocódigo de AIMA para RBFS. Ninguna búsqueda ni optimización delega en SimpleAI, DEAP ni un solver. Ambos integrantes podemos explicar y modificar cualquier fragmento durante la sustentación; para eso preparamos guías de estudio por etapa.
 
 **Entorno de ejecución.** Se imprime a continuación, con la herramienta de medición de memoria y sus límites.

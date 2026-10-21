@@ -1,7 +1,7 @@
 # Taller 2 — El problema del viajante (TSP)
 
 **Curso:** Inteligencia Artificial (UTP) · **Referencia:** Russell & Norvig, *AIMA* 4.ª ed., caps. 3 y 4
-**Modalidad:** individual
+**Modalidad:** en pareja · **Integrantes:** Santiago y Januar Mena
 
 A\* con MST · RBFS · Hill Climbing · Simulated Annealing · Algoritmo genético, implementados
 desde cero y comparados en cuatro instancias de TSPLIB (att48, berlin52, brazil58, gr48).
