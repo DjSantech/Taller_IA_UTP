@@ -16,7 +16,7 @@
   profesor. Separa en el historial lo del docente de lo propio y es la base idempotente del constructor.
 
 ### D-03 · Entorno virtual fuera de OneDrive, versiones fijadas
-- `C:\Users\santi\venvs\ia-taller3` (misma razón que en los talleres 1 y 2: OneDrive sincronizaría
+- `C:\Users\<usuario>\venvs\ia-taller3` (misma razón que en los talleres 1 y 2: OneDrive sincronizaría
   miles de archivos del entorno). `requirements.txt` fija las versiones realmente probadas.
 
 ### D-04 · Mismo repositorio, rama independiente `taller-3`
