@@ -1,0 +1,322 @@
+{
+  "description": "Taller 3 IA UTP - ablacion E0 vs E* (Experimento 3)",
+  "started": "2026-11-10T10:46:29",
+  "finished": "2026-11-10T11:03:22",
+  "duration_wall_s": 1013.3,
+  "cpu_main_process_s": 985.4,
+  "workers": 1,
+  "n_games": 96,
+  "tournament": {
+    "agents": [
+      "AB mejorado E0",
+      "AB mejorado E*",
+      "Minimax"
+    ],
+    "opening_ids": [
+      "A1_italiana",
+      "A2_gambito_dama_rehusado",
+      "A3_siciliana_najdorf",
+      "A4_inglesa",
+      "A5_espanola",
+      "A6_francesa",
+      "A7_caro_kann",
+      "A8_eslava",
+      "A9_india_rey",
+      "A10_nimzoindia",
+      "A11_escocesa",
+      "A12_londres",
+      "A13_india_dama",
+      "A14_escandinava",
+      "A15_pirc",
+      "A16_inglesa_simetrica"
+    ],
+    "time_limit_s": 0.2,
+    "max_plies": 160,
+    "depth": 2,
+    "mcts_simulations": null,
+    "tolerance_s": 0.05,
+    "seed_base": 500000,
+    "seed_stride": 1000,
+    "event": "Taller 3 IA UTP - ablacion E0 vs E* (Experimento 3)",
+    "game_prefix": "X"
+  },
+  "policies": {
+    "points": "victoria 1, tablas 0.5, derrota 0; solo partidas terminadas",
+    "truncation": "160 plies de los agentes tras la apertura -> truncada, resultado oficial '*', fuera de los puntos; sin adjudicacion por E",
+    "time_excess": "tiempo real de choose > 0.2 + 0.05 s -> time_exceeded=1; la jugada se aplica igual (politica uniforme)",
+    "seeds": "partida k: semilla base = 500000 + 1000*k; jugada: base + ply",
+    "draws": "reclamo automatico (board.outcome(claim_draw=True))",
+    "openings": "mismas aperturas para todos los pares; cada apertura con ambos colores"
+  },
+  "agents": {
+    "Minimax": {
+      "label": "Minimax",
+      "class": "MinimaxAgent",
+      "depth": 2,
+      "evaluator": {
+        "name": "E0",
+        "weights": [
+          100.0,
+          15.0,
+          10.0,
+          4.0
+        ]
+      },
+      "budget": "profundidad fija (ignora el plazo; exceso registrado)"
+    },
+    "AB mejorado E*": {
+      "label": "AB mejorado E*",
+      "class": "AlphaBetaImprovedAgent",
+      "max_depth": 8,
+      "quiescence": false,
+      "evaluator": {
+        "name": "E*",
+        "weights": [
+          100.0,
+          100.0,
+          53.375,
+          0.0
+        ]
+      },
+      "budget": "plazo temporal (profundizacion iterativa)"
+    },
+    "AB mejorado E0": {
+      "label": "AB mejorado E0",
+      "class": "AlphaBetaImprovedAgent",
+      "max_depth": 8,
+      "quiescence": false,
+      "evaluator": {
+        "name": "E0",
+        "weights": [
+          100.0,
+          15.0,
+          10.0,
+          4.0
+        ]
+      },
+      "budget": "plazo temporal (profundizacion iterativa)"
+    }
+  },
+  "openings": [
+    {
+      "id": "A1_italiana",
+      "name": "Italiana (Giuoco Piano)",
+      "eco": "C50",
+      "moves": "e2e4 e7e5 g1f3 b8c6 f1c4 f8c5",
+      "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4"
+    },
+    {
+      "id": "A2_gambito_dama_rehusado",
+      "name": "Gambito de dama rehusado",
+      "eco": "D35",
+      "moves": "d2d4 d7d5 c2c4 e7e6 b1c3 g8f6",
+      "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 2 4"
+    },
+    {
+      "id": "A3_siciliana_najdorf",
+      "name": "Siciliana Najdorf",
+      "eco": "B90",
+      "moves": "e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6 b1c3 a7a6",
+      "fen": "rnbqkb1r/1p2pppp/p2p1n2/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 6"
+    },
+    {
+      "id": "A4_inglesa",
+      "name": "Inglesa (cuatro caballos invertida)",
+      "eco": "A28",
+      "moves": "c2c4 e7e5 b1c3 g8f6 g1f3 b8c6",
+      "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p3/2P5/2N2N2/PP1PPPPP/R1BQKB1R w KQkq - 4 4"
+    },
+    {
+      "id": "A5_espanola",
+      "name": "Espanola (Ruy Lopez)",
+      "eco": "C78",
+      "moves": "e2e4 e7e5 g1f3 b8c6 f1b5 a7a6 b5a4 g8f6",
+      "fen": "r1bqkb1r/1ppp1ppp/p1n2n2/4p3/B3P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 2 5"
+    },
+    {
+      "id": "A6_francesa",
+      "name": "Francesa clasica",
+      "eco": "C11",
+      "moves": "e2e4 e7e6 d2d4 d7d5 b1c3 g8f6",
+      "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/3PP3/2N5/PPP2PPP/R1BQKBNR w KQkq - 2 4"
+    },
+    {
+      "id": "A7_caro_kann",
+      "name": "Caro-Kann clasica",
+      "eco": "B18",
+      "moves": "e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4 c8f5",
+      "fen": "rn1qkbnr/pp2pppp/2p5/5b2/3PN3/8/PPP2PPP/R1BQKBNR w KQkq - 1 5"
+    },
+    {
+      "id": "A8_eslava",
+      "name": "Eslava",
+      "eco": "D11",
+      "moves": "d2d4 d7d5 c2c4 c7c6 g1f3 g8f6",
+      "fen": "rnbqkb1r/pp2pppp/2p2n2/3p4/2PP4/5N2/PP2PPPP/RNBQKB1R w KQkq - 2 4"
+    },
+    {
+      "id": "A9_india_rey",
+      "name": "India de rey",
+      "eco": "E90",
+      "moves": "d2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6",
+      "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N5/PP3PPP/R1BQKBNR w KQkq - 0 5"
+    },
+    {
+      "id": "A10_nimzoindia",
+      "name": "Nimzoindia",
+      "eco": "E20",
+      "moves": "d2d4 g8f6 c2c4 e7e6 b1c3 f8b4",
+      "fen": "rnbqk2r/pppp1ppp/4pn2/8/1bPP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 2 4"
+    },
+    {
+      "id": "A11_escocesa",
+      "name": "Escocesa",
+      "eco": "C45",
+      "moves": "e2e4 e7e5 g1f3 b8c6 d2d4 e5d4 f3d4 g8f6",
+      "fen": "r1bqkb1r/pppp1ppp/2n2n2/8/3NP3/8/PPP2PPP/RNBQKB1R w KQkq - 1 5"
+    },
+    {
+      "id": "A12_londres",
+      "name": "Sistema Londres",
+      "eco": "D02",
+      "moves": "d2d4 d7d5 g1f3 g8f6 c1f4 e7e6",
+      "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/3P1B2/5N2/PPP1PPPP/RN1QKB1R w KQkq - 0 4"
+    },
+    {
+      "id": "A13_india_dama",
+      "name": "India de dama",
+      "eco": "E12",
+      "moves": "d2d4 g8f6 c2c4 e7e6 g1f3 b7b6",
+      "fen": "rnbqkb1r/p1pp1ppp/1p2pn2/8/2PP4/5N2/PP2PPPP/RNBQKB1R w KQkq - 0 4"
+    },
+    {
+      "id": "A14_escandinava",
+      "name": "Escandinava",
+      "eco": "B01",
+      "moves": "e2e4 d7d5 e4d5 d8d5 b1c3 d5a5",
+      "fen": "rnb1kbnr/ppp1pppp/8/q7/8/2N5/PPPP1PPP/R1BQKBNR w KQkq - 2 4"
+    },
+    {
+      "id": "A15_pirc",
+      "name": "Pirc",
+      "eco": "B07",
+      "moves": "e2e4 d7d6 d2d4 g8f6 b1c3 g7g6",
+      "fen": "rnbqkb1r/ppp1pp1p/3p1np1/8/3PP3/2N5/PPP2PPP/R1BQKBNR w KQkq - 0 4"
+    },
+    {
+      "id": "A16_inglesa_simetrica",
+      "name": "Inglesa simetrica",
+      "eco": "A30",
+      "moves": "c2c4 c7c5 g1f3 g8f6 b1c3 b8c6",
+      "fen": "r1bqkb1r/pp1ppppp/2n2n2/2p5/2P5/2N2N2/PP1PPPPP/R1BQKB1R w KQkq - 4 4"
+    }
+  ],
+  "games_seeds": {
+    "X001": 501000,
+    "X002": 502000,
+    "X003": 503000,
+    "X004": 504000,
+    "X005": 505000,
+    "X006": 506000,
+    "X007": 507000,
+    "X008": 508000,
+    "X009": 509000,
+    "X010": 510000,
+    "X011": 511000,
+    "X012": 512000,
+    "X013": 513000,
+    "X014": 514000,
+    "X015": 515000,
+    "X016": 516000,
+    "X017": 517000,
+    "X018": 518000,
+    "X019": 519000,
+    "X020": 520000,
+    "X021": 521000,
+    "X022": 522000,
+    "X023": 523000,
+    "X024": 524000,
+    "X025": 525000,
+    "X026": 526000,
+    "X027": 527000,
+    "X028": 528000,
+    "X029": 529000,
+    "X030": 530000,
+    "X031": 531000,
+    "X032": 532000,
+    "X033": 533000,
+    "X034": 534000,
+    "X035": 535000,
+    "X036": 536000,
+    "X037": 537000,
+    "X038": 538000,
+    "X039": 539000,
+    "X040": 540000,
+    "X041": 541000,
+    "X042": 542000,
+    "X043": 543000,
+    "X044": 544000,
+    "X045": 545000,
+    "X046": 546000,
+    "X047": 547000,
+    "X048": 548000,
+    "X049": 549000,
+    "X050": 550000,
+    "X051": 551000,
+    "X052": 552000,
+    "X053": 553000,
+    "X054": 554000,
+    "X055": 555000,
+    "X056": 556000,
+    "X057": 557000,
+    "X058": 558000,
+    "X059": 559000,
+    "X060": 560000,
+    "X061": 561000,
+    "X062": 562000,
+    "X063": 563000,
+    "X064": 564000,
+    "X065": 565000,
+    "X066": 566000,
+    "X067": 567000,
+    "X068": 568000,
+    "X069": 569000,
+    "X070": 570000,
+    "X071": 571000,
+    "X072": 572000,
+    "X073": 573000,
+    "X074": 574000,
+    "X075": 575000,
+    "X076": 576000,
+    "X077": 577000,
+    "X078": 578000,
+    "X079": 579000,
+    "X080": 580000,
+    "X081": 581000,
+    "X082": 582000,
+    "X083": 583000,
+    "X084": 584000,
+    "X085": 585000,
+    "X086": 586000,
+    "X087": 587000,
+    "X088": 588000,
+    "X089": 589000,
+    "X090": 590000,
+    "X091": 591000,
+    "X092": 592000,
+    "X093": 593000,
+    "X094": 594000,
+    "X095": 595000,
+    "X096": 596000
+  },
+  "environment": {
+    "python": "3.13.7",
+    "python_chess": "1.11.2",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+    "machine": "AMD64",
+    "logical_cpus": 12,
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2"
+  }
+}

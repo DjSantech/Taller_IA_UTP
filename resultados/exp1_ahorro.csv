@@ -1,0 +1,46 @@
+position_id,character,turn,depth,algorithm,value,move,nodes,leaves,cutoffs,time_s,sort_time_s,search_time_s,nodes_vs_minimax,time_vs_minimax
+P1_captura,captura,negras,1,Minimax,108.0,c6d4,33,32,0,0.00237,0.0,0.00237,1.0,1.0
+P1_captura,captura,negras,1,Alfa-beta natural,108.0,c6d4,33,32,0,0.00275,0.0,0.00275,1.0,1.1603
+P1_captura,captura,negras,1,Alfa-beta ordenado,108.0,c6d4,33,32,0,0.00323,6e-05,0.00317,1.0,1.3625
+P1_captura,captura,negras,2,Minimax,-14.0,f8b4,1151,1118,0,0.08091,0.0,0.08091,1.0,1.0
+P1_captura,captura,negras,2,Alfa-beta natural,-14.0,f8b4,226,193,28,0.01614,0.0,0.01614,0.1964,0.1995
+P1_captura,captura,negras,2,Alfa-beta ordenado,-14.0,f8b4,107,74,30,0.00726,0.0018,0.00546,0.093,0.0897
+P1_captura,captura,negras,3,Minimax,192.0,d8f6,36912,35761,0,2.49431,0.0,2.49431,1.0,1.0
+P1_captura,captura,negras,3,Alfa-beta natural,192.0,d8f6,6296,5953,228,0.41532,0.0,0.41532,0.1706,0.1665
+P1_captura,captura,negras,3,Alfa-beta ordenado,192.0,d8f6,1519,1377,97,0.10844,0.00941,0.09903,0.0412,0.0435
+P2_jaque,jaque,blancas,1,Minimax,34.0,e3c3,9,8,0,0.00079,0.0,0.00079,1.0,1.0
+P2_jaque,jaque,blancas,1,Alfa-beta natural,34.0,e3c3,9,8,0,0.00068,0.0,0.00068,1.0,0.8604
+P2_jaque,jaque,blancas,1,Alfa-beta ordenado,34.0,e3c3,9,8,0,0.00069,3e-05,0.00067,1.0,0.8834
+P2_jaque,jaque,blancas,2,Minimax,-66.0,e1d1,288,279,0,0.01895,0.0,0.01895,1.0,1.0
+P2_jaque,jaque,blancas,2,Alfa-beta natural,-66.0,e1d1,198,189,6,0.01328,0.0,0.01328,0.6875,0.7007
+P2_jaque,jaque,blancas,2,Alfa-beta ordenado,-66.0,e1d1,87,78,6,0.00583,0.00046,0.00538,0.3021,0.3077
+P2_jaque,jaque,blancas,3,Minimax,94.0,c2c3,10276,9988,0,0.80158,0.0,0.80158,1.0,1.0
+P2_jaque,jaque,blancas,3,Alfa-beta natural,94.0,c2c3,2446,2211,184,0.1895,0.0,0.1895,0.238,0.2364
+P2_jaque,jaque,blancas,3,Alfa-beta ordenado,94.0,c2c3,776,589,165,0.05652,0.01285,0.04367,0.0755,0.0705
+P3_defensa,defensa,blancas,1,Minimax,786.75,d1h5,33,32,0,0.00234,0.0,0.00234,1.0,1.0
+P3_defensa,defensa,blancas,1,Alfa-beta natural,786.75,d1h5,33,32,0,0.00186,0.0,0.00186,1.0,0.7951
+P3_defensa,defensa,blancas,1,Alfa-beta ordenado,786.75,d1h5,33,32,0,0.00289,6e-05,0.00284,1.0,1.2381
+P3_defensa,defensa,blancas,2,Minimax,673.37,d4f5,757,724,0,0.04044,0.0,0.04044,1.0,1.0
+P3_defensa,defensa,blancas,2,Alfa-beta natural,673.37,d4f5,190,157,29,0.01022,0.0,0.01022,0.251,0.2528
+P3_defensa,defensa,blancas,2,Alfa-beta ordenado,673.37,d4f5,108,75,30,0.00678,0.00135,0.00542,0.1427,0.1675
+P3_defensa,defensa,blancas,3,Minimax,794.69,d1e2,24254,23497,0,1.37009,0.0,1.37009,1.0,1.0
+P3_defensa,defensa,blancas,3,Alfa-beta natural,794.69,d1e2,2530,2320,150,0.14229,0.0,0.14229,0.1043,0.1039
+P3_defensa,defensa,blancas,3,Alfa-beta ordenado,794.69,d1e2,1450,1304,100,0.08583,0.00739,0.07844,0.0598,0.0626
+P4_tranquila,tranquila,blancas,1,Minimax,384.97,f4d6,40,39,0,0.00284,0.0,0.00284,1.0,1.0
+P4_tranquila,tranquila,blancas,1,Alfa-beta natural,384.97,f4d6,40,39,0,0.00337,0.0,0.00337,1.0,1.185
+P4_tranquila,tranquila,blancas,1,Alfa-beta ordenado,384.97,f4d6,40,39,0,0.00249,6e-05,0.00243,1.0,0.8748
+P4_tranquila,tranquila,blancas,2,Minimax,-16.0,f4d6,1617,1577,0,0.10371,0.0,0.10371,1.0,1.0
+P4_tranquila,tranquila,blancas,2,Alfa-beta natural,-16.0,f4d6,611,571,37,0.04315,0.0,0.04315,0.3779,0.4161
+P4_tranquila,tranquila,blancas,2,Alfa-beta ordenado,-16.0,f4d6,111,71,38,0.0108,0.00303,0.00777,0.0686,0.1041
+P4_tranquila,tranquila,blancas,3,Minimax,266.0,f4g5,64791,63174,0,4.30491,0.0,4.30491,1.0,1.0
+P4_tranquila,tranquila,blancas,3,Alfa-beta natural,266.0,f4g5,11570,10752,586,0.84346,0.0,0.84346,0.1786,0.1959
+P4_tranquila,tranquila,blancas,3,Alfa-beta ordenado,266.0,f4g5,1719,1566,109,0.11956,0.01149,0.10807,0.0265,0.0278
+P5_final,final,blancas,1,Minimax,14.44,d4c4,21,20,0,0.00152,0.0,0.00152,1.0,1.0
+P5_final,final,blancas,1,Alfa-beta natural,14.44,d4c4,21,20,0,0.0014,0.0,0.0014,1.0,0.9243
+P5_final,final,blancas,1,Alfa-beta ordenado,14.44,d4c4,21,20,0,0.00128,5e-05,0.00123,1.0,0.8439
+P5_final,final,blancas,2,Minimax,-103.0,d4d8,426,405,0,0.02552,0.0,0.02552,1.0,1.0
+P5_final,final,blancas,2,Alfa-beta natural,-103.0,d4d8,275,254,19,0.01591,0.0,0.01591,0.6455,0.6236
+P5_final,final,blancas,2,Alfa-beta ordenado,-103.0,d4d8,58,37,19,0.00346,0.00074,0.00272,0.1362,0.1354
+P5_final,final,blancas,3,Minimax,103.0,d4d7,7924,7498,0,0.44822,0.0,0.44822,1.0,1.0
+P5_final,final,blancas,3,Alfa-beta natural,103.0,d4d7,1032,907,87,0.06097,0.0,0.06097,0.1302,0.136
+P5_final,final,blancas,3,Alfa-beta ordenado,103.0,d4d7,707,603,60,0.04827,0.00515,0.04312,0.0892,0.1077

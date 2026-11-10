@@ -1,0 +1,241 @@
+game_id,opening_id,seed,white_agent,black_agent,opening_plies,plies,agent_plies,termination,official_result,truncated,white_points,black_points,winner_agent,duration_s,white_moves,white_time_s,white_time_max_s,white_exceeded,white_depth_mean,white_sims_mean,black_moves,black_time_s,black_time_max_s,black_exceeded,black_depth_mean,black_sims_mean,material_white_final,status
+T001,A1_italiana,1000,Aleatorio,Voraz,6,30,24,checkmate,0-1,0,0.0,1.0,Voraz,0.048,12,0.0007,0.0001,0,0,0,12,0.0246,0.003,0,1,0,-32.6,terminal
+T002,A1_italiana,2000,Voraz,Aleatorio,6,23,17,checkmate,1-0,0,1.0,0.0,Voraz,0.041,9,0.0231,0.0037,0,1,0,8,0.0005,0.0001,0,0,0,17.7,terminal
+T003,A2_gambito_dama_rehusado,3000,Aleatorio,Voraz,6,108,102,checkmate,0-1,0,0.0,1.0,Voraz,0.226,51,0.0029,0.0001,0,0,0,51,0.1256,0.0045,0,1,0,-15.0,terminal
+T004,A2_gambito_dama_rehusado,4000,Voraz,Aleatorio,6,37,31,checkmate,1-0,0,1.0,0.0,Voraz,0.082,16,0.0435,0.0039,0,1,0,15,0.0016,0.0003,0,0,0,44.8,terminal
+T005,A3_siciliana_najdorf,5000,Aleatorio,Voraz,10,66,56,checkmate,0-1,0,0.0,1.0,Voraz,0.111,28,0.0015,0.0001,0,0,0,28,0.0583,0.0035,0,1,0,-25.4,terminal
+T006,A3_siciliana_najdorf,6000,Voraz,Aleatorio,10,61,51,checkmate,1-0,0,1.0,0.0,Voraz,0.131,26,0.0769,0.0042,0,1,0,25,0.0025,0.0011,0,0,0,22.5,terminal
+T007,A4_inglesa,7000,Aleatorio,Voraz,6,24,18,checkmate,0-1,0,0.0,1.0,Voraz,0.038,9,0.0007,0.0002,0,0,0,9,0.0168,0.0026,0,1,0,-25.4,terminal
+T008,A4_inglesa,8000,Voraz,Aleatorio,6,45,39,checkmate,1-0,0,1.0,0.0,Voraz,0.086,20,0.0448,0.0041,0,1,0,19,0.0012,0.0002,0,0,0,33.8,terminal
+T009,A5_espanola,9000,Aleatorio,Voraz,8,64,56,checkmate,0-1,0,0.0,1.0,Voraz,0.139,28,0.0018,0.0002,0,0,0,28,0.0771,0.0059,0,1,0,-28.4,terminal
+T010,A5_espanola,10000,Voraz,Aleatorio,8,123,115,checkmate,1-0,0,1.0,0.0,Voraz,0.258,58,0.1391,0.0046,0,1,0,57,0.0034,0.0002,0,0,0,20.0,terminal
+T011,A6_francesa,11000,Aleatorio,Voraz,6,80,74,checkmate,0-1,0,0.0,1.0,Voraz,0.178,37,0.0027,0.0002,0,0,0,37,0.0964,0.0047,0,1,0,-13.2,terminal
+T012,A6_francesa,12000,Voraz,Aleatorio,6,23,17,checkmate,1-0,0,1.0,0.0,Voraz,0.051,9,0.0282,0.0062,0,1,0,8,0.0006,0.0001,0,0,0,24.0,terminal
+T013,A7_caro_kann,13000,Aleatorio,Voraz,8,66,58,checkmate,0-1,0,0.0,1.0,Voraz,0.163,29,0.0022,0.0002,0,0,0,29,0.0889,0.0055,0,1,0,-14.0,terminal
+T014,A7_caro_kann,14000,Voraz,Aleatorio,8,47,39,checkmate,1-0,0,1.0,0.0,Voraz,0.126,20,0.075,0.0054,0,1,0,19,0.0017,0.0004,0,0,0,34.8,terminal
+T015,A8_eslava,15000,Aleatorio,Voraz,6,70,64,checkmate,0-1,0,0.0,1.0,Voraz,0.168,32,0.0019,0.0001,0,0,0,32,0.0967,0.0053,0,1,0,-34.8,terminal
+T016,A8_eslava,16000,Voraz,Aleatorio,6,55,49,checkmate,1-0,0,1.0,0.0,Voraz,0.111,25,0.0639,0.0044,0,1,0,24,0.0012,0.0001,0,0,0,26.8,terminal
+T017,A1_italiana,17000,Aleatorio,Minimax,6,10,4,checkmate,0-1,0,0.0,1.0,Minimax,0.15,2,0.0002,0.0001,0,0,0,2,0.1422,0.0725,0,2,0,-4.2,terminal
+T018,A1_italiana,18000,Minimax,Aleatorio,6,21,15,checkmate,1-0,0,1.0,0.0,Minimax,0.752,8,0.7303,0.1299,0,2,0,7,0.0006,0.0001,0,0,0,16.4,terminal
+T019,A2_gambito_dama_rehusado,19000,Aleatorio,Minimax,6,28,22,checkmate,0-1,0,0.0,1.0,Minimax,0.938,11,0.001,0.0002,0,0,0,11,0.9017,0.103,0,2,0,-27.0,terminal
+T020,A2_gambito_dama_rehusado,20000,Minimax,Aleatorio,6,29,23,checkmate,1-0,0,1.0,0.0,Minimax,1.126,12,1.087,0.1099,0,2,0,11,0.0009,0.0001,0,0,0,21.4,terminal
+T021,A3_siciliana_najdorf,21000,Aleatorio,Minimax,10,20,10,checkmate,0-1,0,0.0,1.0,Minimax,0.611,5,0.0005,0.0002,0,0,0,5,0.5924,0.1488,0,2,0,-12.3,terminal
+T022,A3_siciliana_najdorf,22000,Minimax,Aleatorio,10,31,21,checkmate,1-0,0,1.0,0.0,Minimax,1.175,11,1.1395,0.1646,0,2,0,10,0.0009,0.0002,0,0,0,22.5,terminal
+T023,A4_inglesa,23000,Aleatorio,Minimax,6,48,42,checkmate,0-1,0,0.0,1.0,Minimax,1.212,21,0.0018,0.0002,0,0,0,21,1.143,0.1199,0,2,0,-38.0,terminal
+T024,A4_inglesa,24000,Minimax,Aleatorio,6,23,17,checkmate,1-0,0,1.0,0.0,Minimax,0.755,9,0.7294,0.0922,0,2,0,8,0.001,0.0003,0,0,0,9.5,terminal
+T025,A5_espanola,25000,Aleatorio,Minimax,8,16,8,checkmate,0-1,0,0.0,1.0,Minimax,0.378,4,0.0003,0.0001,0,0,0,4,0.3654,0.1099,0,2,0,-8.2,terminal
+T026,A5_espanola,26000,Minimax,Aleatorio,8,24,16,threefold_repetition,1/2-1/2,0,0.5,0.5,,0.507,8,0.4833,0.0774,0,2,0,8,0.0007,0.0002,0,0,0,7.4,terminal
+T027,A6_francesa,27000,Aleatorio,Minimax,6,30,24,checkmate,0-1,0,0.0,1.0,Minimax,1.308,12,0.0011,0.0002,0,0,0,12,1.2635,0.1442,0,2,0,-13.5,terminal
+T028,A6_francesa,28000,Minimax,Aleatorio,6,39,33,checkmate,1-0,0,1.0,0.0,Minimax,0.975,17,0.9305,0.1028,0,2,0,16,0.0012,0.0001,0,0,0,37.0,terminal
+T029,A7_caro_kann,29000,Aleatorio,Minimax,8,54,46,checkmate,0-1,0,0.0,1.0,Minimax,2.105,23,0.0019,0.0001,0,0,0,23,2.0302,0.1552,0,2,0,-25.7,terminal
+T030,A7_caro_kann,30000,Minimax,Aleatorio,8,45,37,checkmate,1-0,0,1.0,0.0,Minimax,1.544,19,1.4738,0.1389,0,2,0,18,0.0017,0.0002,0,0,0,36.0,terminal
+T031,A8_eslava,31000,Aleatorio,Minimax,6,48,42,checkmate,0-1,0,0.0,1.0,Minimax,1.671,21,0.0019,0.0002,0,0,0,21,1.6075,0.1213,0,2,0,-28.0,terminal
+T032,A8_eslava,32000,Minimax,Aleatorio,6,23,17,checkmate,1-0,0,1.0,0.0,Minimax,0.725,9,0.7011,0.1006,0,2,0,8,0.0006,0.0002,0,0,0,29.2,terminal
+T033,A1_italiana,33000,Aleatorio,Alfa-beta,6,36,30,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.577,15,0.0014,0.0001,0,0,0,15,0.5164,0.0583,0,2,0,-39.0,terminal
+T034,A1_italiana,34000,Alfa-beta,Aleatorio,6,23,17,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.486,9,0.4568,0.1017,0,2,0,8,0.0008,0.0002,0,0,0,6.2,terminal
+T035,A2_gambito_dama_rehusado,35000,Aleatorio,Alfa-beta,6,48,42,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.677,21,0.0018,0.0001,0,0,0,21,0.6042,0.0504,0,2,0,-35.4,terminal
+T036,A2_gambito_dama_rehusado,36000,Alfa-beta,Aleatorio,6,47,41,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.421,21,0.3668,0.0543,0,2,0,20,0.0014,0.0001,0,0,0,39.0,terminal
+T037,A3_siciliana_najdorf,37000,Aleatorio,Alfa-beta,10,34,24,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.252,12,0.001,0.0002,0,0,0,12,0.2162,0.0402,0,2,0,-31.8,terminal
+T038,A3_siciliana_najdorf,38000,Alfa-beta,Aleatorio,10,47,37,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.362,19,0.308,0.065,0,2,0,18,0.0014,0.0002,0,0,0,32.4,terminal
+T039,A4_inglesa,39000,Aleatorio,Alfa-beta,6,12,6,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.049,3,0.0002,0.0001,0,0,0,3,0.0421,0.0152,0,2,0,-3.2,terminal
+T040,A4_inglesa,40000,Alfa-beta,Aleatorio,6,35,29,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.461,15,0.418,0.0388,0,2,0,14,0.0012,0.0001,0,0,0,14.3,terminal
+T041,A5_espanola,41000,Aleatorio,Alfa-beta,8,36,28,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.269,14,0.0011,0.0001,0,0,0,14,0.233,0.0256,0,2,0,-22.3,terminal
+T042,A5_espanola,42000,Alfa-beta,Aleatorio,8,47,39,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.376,20,0.3293,0.0359,0,2,0,19,0.0014,0.0001,0,0,0,33.7,terminal
+T043,A6_francesa,43000,Aleatorio,Alfa-beta,6,68,62,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.609,31,0.0033,0.0004,0,0,0,31,0.5161,0.0327,0,2,0,-35.7,terminal
+T044,A6_francesa,44000,Alfa-beta,Aleatorio,6,35,29,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.336,15,0.291,0.0448,0,2,0,14,0.0012,0.0002,0,0,0,32.7,terminal
+T045,A7_caro_kann,45000,Aleatorio,Alfa-beta,8,54,46,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.457,23,0.0019,0.0002,0,0,0,23,0.3948,0.0435,0,2,0,-37.0,terminal
+T046,A7_caro_kann,46000,Alfa-beta,Aleatorio,8,47,39,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.404,20,0.3473,0.0623,0,2,0,19,0.0014,0.0002,0,0,0,39.0,terminal
+T047,A8_eslava,47000,Aleatorio,Alfa-beta,6,70,64,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.62,32,0.0027,0.0002,0,0,0,32,0.5318,0.059,0,2,0,-26.7,terminal
+T048,A8_eslava,48000,Alfa-beta,Aleatorio,6,15,9,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.152,5,0.1382,0.0443,0,2,0,4,0.0003,0.0001,0,0,0,3.3,terminal
+T049,A1_italiana,49000,Aleatorio,Alfa-beta mejorado,6,20,14,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,1.233,7,0.0008,0.0002,0,0,0,7,1.2081,0.2006,0,2.286,0,-1.0,terminal
+T050,A1_italiana,50000,Alfa-beta mejorado,Aleatorio,6,29,23,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,2.249,12,2.2091,0.2008,0,2.083,0,11,0.0008,0.0001,0,0,0,28.8,terminal
+T051,A2_gambito_dama_rehusado,51000,Aleatorio,Alfa-beta mejorado,6,44,38,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,3.67,19,0.0018,0.0002,0,0,0,19,3.6107,0.2007,0,2.684,0,-30.5,terminal
+T052,A2_gambito_dama_rehusado,52000,Alfa-beta mejorado,Aleatorio,6,35,29,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,2.873,15,2.8125,0.2007,0,2.333,0,14,0.0014,0.0002,0,0,0,15.7,terminal
+T053,A3_siciliana_najdorf,53000,Aleatorio,Alfa-beta mejorado,10,34,24,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,2.262,12,0.0014,0.0003,0,0,0,12,2.2112,0.2009,0,2.583,0,-23.5,terminal
+T054,A3_siciliana_najdorf,54000,Alfa-beta mejorado,Aleatorio,10,35,25,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,2.464,13,2.4128,0.2008,0,2,0,12,0.0012,0.0002,0,0,0,10.0,terminal
+T055,A4_inglesa,55000,Aleatorio,Alfa-beta mejorado,6,44,38,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,3.681,19,0.0017,0.0001,0,0,0,19,3.6142,0.2007,0,2.158,0,-30.7,terminal
+T056,A4_inglesa,56000,Alfa-beta mejorado,Aleatorio,6,19,13,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,1.245,7,1.2097,0.201,0,2,0,6,0.0007,0.0002,0,0,0,0.0,terminal
+T057,A5_espanola,57000,Aleatorio,Alfa-beta mejorado,8,26,18,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,1.637,9,0.0008,0.0001,0,0,0,9,1.6093,0.201,0,2.667,0,-14.3,terminal
+T058,A5_espanola,58000,Alfa-beta mejorado,Aleatorio,8,27,19,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,1.849,10,1.8114,0.2008,0,2.3,0,9,0.0008,0.0001,0,0,0,17.4,terminal
+T059,A6_francesa,59000,Aleatorio,Alfa-beta mejorado,6,28,22,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,2.066,11,0.0012,0.0002,0,0,0,11,2.015,0.2008,0,2.091,0,-10.5,terminal
+T060,A6_francesa,60000,Alfa-beta mejorado,Aleatorio,6,27,21,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,2.054,11,2.012,0.2008,0,1.909,0,10,0.0009,0.0001,0,0,0,14.2,terminal
+T061,A7_caro_kann,61000,Aleatorio,Alfa-beta mejorado,8,24,16,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,1.443,8,0.0008,0.0001,0,0,0,8,1.4109,0.2014,0,2.25,0,-16.5,terminal
+T062,A7_caro_kann,62000,Alfa-beta mejorado,Aleatorio,8,27,19,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,1.861,10,1.8128,0.2008,0,2,0,9,0.0012,0.0002,0,0,0,22.5,terminal
+T063,A8_eslava,63000,Aleatorio,Alfa-beta mejorado,6,32,26,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,2.457,13,0.0013,0.0002,0,0,0,13,2.4091,0.2007,0,2.538,0,-20.7,terminal
+T064,A8_eslava,64000,Alfa-beta mejorado,Aleatorio,6,45,39,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,3.886,20,3.813,0.201,0,2.3,0,19,0.0018,0.0002,0,0,0,27.8,terminal
+T065,A1_italiana,65000,Aleatorio,MCTS,6,66,60,checkmate,0-1,0,0.0,1.0,MCTS,6.222,30,0.0032,0.0002,0,0,0,30,6.0987,0.2844,1,2.9,365.4,-40.0,terminal
+T066,A1_italiana,66000,MCTS,Aleatorio,6,59,53,checkmate,1-0,0,1.0,0.0,MCTS,5.572,27,5.4593,0.2464,0,2.593,369.7,26,0.0033,0.0006,0,0,0,31.8,terminal
+T067,A2_gambito_dama_rehusado,67000,Aleatorio,MCTS,6,28,22,checkmate,0-1,0,0.0,1.0,MCTS,2.306,11,0.0012,0.0002,0,0,0,11,2.2614,0.2566,1,2.818,349.4,-24.9,terminal
+T068,A2_gambito_dama_rehusado,68000,MCTS,Aleatorio,6,25,19,checkmate,1-0,0,1.0,0.0,MCTS,2.048,10,2.0048,0.2007,0,2.8,336.2,9,0.001,0.0001,0,0,0,38.8,terminal
+T069,A3_siciliana_najdorf,69000,Aleatorio,MCTS,10,88,78,checkmate,0-1,0,0.0,1.0,MCTS,8.161,39,0.0046,0.0002,0,0,0,39,7.986,0.3038,1,2.795,331.9,-33.8,terminal
+T070,A3_siciliana_najdorf,70000,MCTS,Aleatorio,10,75,65,checkmate,1-0,0,1.0,0.0,MCTS,6.779,33,6.6509,0.2284,0,2.818,353.9,32,0.003,0.0002,0,0,0,39.0,terminal
+T071,A4_inglesa,71000,Aleatorio,MCTS,6,80,74,checkmate,0-1,0,0.0,1.0,MCTS,7.541,37,0.0032,0.0001,0,0,0,37,7.4172,0.2008,0,2.73,414.6,-34.0,terminal
+T072,A4_inglesa,72000,MCTS,Aleatorio,6,71,65,checkmate,1-0,0,1.0,0.0,MCTS,6.903,33,6.7706,0.3534,1,2.697,374.1,32,0.0052,0.002,0,0,0,30.6,terminal
+T073,A5_espanola,73000,Aleatorio,MCTS,8,64,56,checkmate,0-1,0,0.0,1.0,MCTS,5.844,28,0.003,0.0002,0,0,0,28,5.7263,0.2804,1,2.571,320.9,-31.7,terminal
+T074,A5_espanola,74000,MCTS,Aleatorio,8,65,57,checkmate,1-0,0,1.0,0.0,MCTS,6.003,29,5.8934,0.2807,1,2.552,363.8,28,0.0029,0.0002,0,0,0,35.5,terminal
+T075,A6_francesa,75000,Aleatorio,MCTS,6,86,80,checkmate,0-1,0,0.0,1.0,MCTS,8.466,40,0.0049,0.0003,0,0,0,40,8.2785,0.335,2,2.9,328.2,-33.8,terminal
+T076,A6_francesa,76000,MCTS,Aleatorio,6,31,25,checkmate,1-0,0,1.0,0.0,MCTS,2.787,13,2.7248,0.3187,1,2.769,315.8,12,0.0016,0.0002,0,0,0,17.2,terminal
+T077,A7_caro_kann,77000,Aleatorio,MCTS,8,50,42,checkmate,0-1,0,0.0,1.0,MCTS,4.31,21,0.0026,0.0002,0,0,0,21,4.2168,0.2079,0,2.571,318.9,-22.5,terminal
+T078,A7_caro_kann,78000,MCTS,Aleatorio,8,51,43,checkmate,1-0,0,1.0,0.0,MCTS,4.506,22,4.4092,0.2008,0,2.5,341.5,21,0.0025,0.0002,0,0,0,38.8,terminal
+T079,A8_eslava,79000,Aleatorio,MCTS,6,52,46,checkmate,0-1,0,0.0,1.0,MCTS,4.781,23,0.0025,0.0002,0,0,0,23,4.6982,0.288,1,2.565,392.3,-28.8,terminal
+T080,A8_eslava,80000,MCTS,Aleatorio,6,67,61,checkmate,1-0,0,1.0,0.0,MCTS,6.436,31,6.3191,0.2794,1,2.774,393.2,30,0.0031,0.0002,0,0,0,34.0,terminal
+T081,A1_italiana,81000,Voraz,Minimax,6,54,48,checkmate,0-1,0,0.0,1.0,Minimax,1.704,24,0.0342,0.0037,0,1,0,24,1.5912,0.151,0,2,0,-20.5,terminal
+T082,A1_italiana,82000,Minimax,Voraz,6,21,15,checkmate,1-0,0,1.0,0.0,Minimax,0.791,8,0.7414,0.1774,0,2,0,7,0.0167,0.004,0,1,0,15.4,terminal
+T083,A2_gambito_dama_rehusado,83000,Voraz,Minimax,6,34,28,checkmate,0-1,0,0.0,1.0,Minimax,1.543,14,0.0173,0.0036,0,1,0,14,1.4767,0.1842,0,2,0,-21.4,terminal
+T084,A2_gambito_dama_rehusado,84000,Minimax,Voraz,6,61,55,checkmate,1-0,0,1.0,0.0,Minimax,1.691,28,1.5358,0.1194,0,2,0,27,0.0571,0.005,0,1,0,30.5,terminal
+T085,A3_siciliana_najdorf,85000,Voraz,Minimax,10,38,28,checkmate,0-1,0,0.0,1.0,Minimax,1.593,14,0.0354,0.005,0,1,0,14,1.4928,0.1615,0,2,0,-33.0,terminal
+T086,A3_siciliana_najdorf,86000,Minimax,Voraz,10,29,19,checkmate,1-0,0,1.0,0.0,Minimax,1.161,10,1.1006,0.1766,0,2,0,9,0.0195,0.0043,0,1,0,3.2,terminal
+T087,A4_inglesa,87000,Voraz,Minimax,6,52,46,checkmate,0-1,0,0.0,1.0,Minimax,1.524,23,0.0315,0.0044,0,1,0,23,1.416,0.1122,0,2,0,-28.5,terminal
+T088,A4_inglesa,88000,Minimax,Voraz,6,37,31,checkmate,1-0,0,1.0,0.0,Minimax,1.565,16,1.4756,0.1205,0,2,0,15,0.0334,0.004,0,1,0,34.0,terminal
+T089,A5_espanola,89000,Voraz,Minimax,8,32,24,checkmate,0-1,0,0.0,1.0,Minimax,1.383,12,0.028,0.0039,0,1,0,12,1.3052,0.1487,0,2,0,-24.5,terminal
+T090,A5_espanola,90000,Minimax,Voraz,8,47,39,checkmate,1-0,0,1.0,0.0,Minimax,1.768,20,1.6581,0.1655,0,2,0,19,0.0284,0.0034,0,1,0,31.7,terminal
+T091,A6_francesa,91000,Voraz,Minimax,6,34,28,checkmate,0-1,0,0.0,1.0,Minimax,1.394,14,0.0263,0.0039,0,1,0,14,1.3144,0.1949,0,2,0,-27.4,terminal
+T092,A6_francesa,92000,Minimax,Voraz,6,39,33,checkmate,1-0,0,1.0,0.0,Minimax,1.69,17,1.598,0.134,0,2,0,16,0.0221,0.0035,0,1,0,21.5,terminal
+T093,A7_caro_kann,93000,Voraz,Minimax,8,20,12,checkmate,0-1,0,0.0,1.0,Minimax,0.606,6,0.0211,0.0049,0,1,0,6,0.5577,0.1489,0,2,0,-18.8,terminal
+T094,A7_caro_kann,94000,Minimax,Voraz,8,15,7,checkmate,1-0,0,1.0,0.0,Minimax,0.566,4,0.5394,0.1866,0,2,0,3,0.0085,0.0035,0,1,0,8.0,terminal
+T095,A8_eslava,95000,Voraz,Minimax,6,50,44,checkmate,0-1,0,0.0,1.0,Minimax,1.787,22,0.0224,0.0042,0,1,0,22,1.694,0.1893,0,2,0,-25.0,terminal
+T096,A8_eslava,96000,Minimax,Voraz,6,36,30,threefold_repetition,1/2-1/2,0,0.5,0.5,,1.688,15,1.6141,0.156,0,2,0,15,0.026,0.0038,0,1,0,16.5,terminal
+T097,A1_italiana,97000,Voraz,Alfa-beta,6,24,18,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.238,9,0.0171,0.0041,0,1,0,9,0.1901,0.0506,0,2,0,-21.5,terminal
+T098,A1_italiana,98000,Alfa-beta,Voraz,6,21,15,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.508,8,0.4502,0.1201,0,2,0,7,0.0173,0.0066,0,1,0,15.4,terminal
+T099,A2_gambito_dama_rehusado,99000,Voraz,Alfa-beta,6,34,28,checkmate,0-1,0,0.0,1.0,Alfa-beta,1.221,14,0.0356,0.0056,0,1,0,14,1.0756,0.2137,0,2,0,-21.4,terminal
+T100,A2_gambito_dama_rehusado,100000,Alfa-beta,Voraz,6,84,78,threefold_repetition,1/2-1/2,0,0.5,0.5,,1.066,39,0.8221,0.0933,0,2,0,39,0.0779,0.0067,0,1,0,31.5,terminal
+T101,A3_siciliana_najdorf,101000,Voraz,Alfa-beta,10,42,32,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.313,16,0.0294,0.0037,0,1,0,16,0.236,0.027,0,2,0,-28.4,terminal
+T102,A3_siciliana_najdorf,102000,Alfa-beta,Voraz,10,29,19,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.459,10,0.401,0.1145,0,2,0,9,0.0197,0.0049,0,1,0,3.2,terminal
+T103,A4_inglesa,103000,Voraz,Alfa-beta,6,54,48,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.544,24,0.0323,0.0038,0,1,0,24,0.4345,0.0443,0,2,0,-28.5,terminal
+T104,A4_inglesa,104000,Alfa-beta,Voraz,6,31,25,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.33,13,0.2705,0.0457,0,2,0,12,0.0233,0.0031,0,1,0,33.0,terminal
+T105,A5_espanola,105000,Voraz,Alfa-beta,8,32,24,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.275,12,0.0166,0.0022,0,1,0,12,0.228,0.0342,0,2,0,-27.5,terminal
+T106,A5_espanola,106000,Alfa-beta,Voraz,8,41,33,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.373,17,0.3109,0.0551,0,2,0,16,0.0199,0.0022,0,1,0,28.7,terminal
+T107,A6_francesa,107000,Voraz,Alfa-beta,6,38,32,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.424,16,0.0229,0.0027,0,1,0,16,0.3455,0.0552,0,2,0,-28.4,terminal
+T108,A6_francesa,108000,Alfa-beta,Voraz,6,39,33,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.38,17,0.3116,0.0688,0,2,0,16,0.0168,0.0036,0,1,0,21.5,terminal
+T109,A7_caro_kann,109000,Voraz,Alfa-beta,8,20,12,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.141,6,0.0189,0.0052,0,1,0,6,0.101,0.0326,0,2,0,-18.8,terminal
+T110,A7_caro_kann,110000,Alfa-beta,Voraz,8,15,7,checkmate,1-0,0,1.0,0.0,Alfa-beta,0.179,4,0.1534,0.0631,0,2,0,3,0.0072,0.0026,0,1,0,8.0,terminal
+T111,A8_eslava,111000,Voraz,Alfa-beta,6,46,40,checkmate,0-1,0,0.0,1.0,Alfa-beta,0.422,20,0.0336,0.0037,0,1,0,20,0.3194,0.0332,0,2,0,-25.8,terminal
+T112,A8_eslava,112000,Alfa-beta,Voraz,6,36,30,threefold_repetition,1/2-1/2,0,0.5,0.5,,0.631,15,0.5596,0.1001,0,2,0,15,0.0241,0.0035,0,1,0,16.5,terminal
+T113,A1_italiana,113000,Voraz,Alfa-beta mejorado,6,24,18,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,1.674,9,0.0213,0.0042,0,1,0,9,1.6119,0.2008,0,2.333,0,-21.5,terminal
+T114,A1_italiana,114000,Alfa-beta mejorado,Voraz,6,35,29,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,2.917,15,2.8144,0.201,0,2.2,0,14,0.0332,0.0041,0,1,0,19.5,terminal
+T115,A2_gambito_dama_rehusado,115000,Voraz,Alfa-beta mejorado,6,34,28,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,2.718,14,0.0351,0.0129,0,1,0,14,2.6169,0.2018,0,2.143,0,-21.4,terminal
+T116,A2_gambito_dama_rehusado,116000,Alfa-beta mejorado,Voraz,6,41,35,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,3.535,18,3.418,0.2024,0,2.056,0,17,0.0344,0.004,0,1,0,25.1,terminal
+T117,A3_siciliana_najdorf,117000,Voraz,Alfa-beta mejorado,10,36,26,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,2.506,13,0.0347,0.0049,0,1,0,13,2.4129,0.2007,0,2.308,0,-28.7,terminal
+T118,A3_siciliana_najdorf,118000,Alfa-beta mejorado,Voraz,10,35,25,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,2.49,13,2.412,0.2009,0,2.077,0,12,0.0234,0.004,0,1,0,19.5,terminal
+T119,A4_inglesa,119000,Voraz,Alfa-beta mejorado,6,28,22,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,2.072,11,0.0186,0.0031,0,1,0,11,2.0129,0.2007,0,2.455,0,-15.4,terminal
+T120,A4_inglesa,120000,Alfa-beta mejorado,Voraz,6,31,25,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,2.472,13,2.3939,0.2008,0,2.385,0,12,0.0299,0.0082,0,1,0,33.0,terminal
+T121,A5_espanola,121000,Voraz,Alfa-beta mejorado,8,32,24,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,2.271,12,0.0216,0.003,0,1,0,12,2.2087,0.2008,0,2,0,-27.5,terminal
+T122,A5_espanola,122000,Alfa-beta mejorado,Voraz,8,35,27,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,2.693,14,2.6154,0.2008,0,2.5,0,13,0.0239,0.004,0,1,0,25.4,terminal
+T123,A6_francesa,123000,Voraz,Alfa-beta mejorado,6,36,30,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,2.875,15,0.0227,0.0045,0,1,0,15,2.7966,0.2007,0,2.533,0,-27.4,terminal
+T124,A6_francesa,124000,Alfa-beta mejorado,Voraz,6,47,41,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,4.05,21,3.9512,0.2007,0,2.762,0,20,0.0303,0.0037,0,1,0,24.2,terminal
+T125,A7_caro_kann,125000,Voraz,Alfa-beta mejorado,8,42,34,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,3.311,17,0.0345,0.0054,0,1,0,17,3.2144,0.2009,0,2.588,0,-24.4,terminal
+T126,A7_caro_kann,126000,Alfa-beta mejorado,Voraz,8,15,7,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,0.632,4,0.6048,0.2007,0,2,0,3,0.0087,0.0036,0,1,0,8.0,terminal
+T127,A8_eslava,127000,Voraz,Alfa-beta mejorado,6,26,20,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,1.784,10,0.0175,0.0039,0,1,0,10,1.7291,0.2007,0,2.6,0,-20.4,terminal
+T128,A8_eslava,128000,Alfa-beta mejorado,Voraz,6,36,30,threefold_repetition,1/2-1/2,0,0.5,0.5,,3.083,15,3.0066,0.2008,0,2.4,0,15,0.0233,0.0031,0,1,0,15.4,terminal
+T129,A1_italiana,129000,Voraz,MCTS,6,44,38,checkmate,0-1,0,0.0,1.0,MCTS,3.926,19,0.0351,0.005,0,1,0,19,3.825,0.218,0,2.947,391.5,-21.0,terminal
+T130,A1_italiana,130000,MCTS,Voraz,6,68,62,threefold_repetition,1/2-1/2,0,0.5,0.5,,6.366,31,6.2199,0.207,0,2.935,384.4,31,0.0447,0.0043,0,1,0,17.5,terminal
+T131,A2_gambito_dama_rehusado,131000,Voraz,MCTS,6,94,88,checkmate,0-1,0,0.0,1.0,MCTS,9.063,44,0.0651,0.0048,0,1,0,44,8.8528,0.2309,0,2.727,399.3,-13.3,terminal
+T132,A2_gambito_dama_rehusado,132000,MCTS,Voraz,6,81,75,checkmate,1-0,0,1.0,0.0,MCTS,7.878,38,7.6659,0.247,0,2.711,390.5,37,0.0681,0.0041,0,1,0,19.0,terminal
+T133,A3_siciliana_najdorf,133000,Voraz,MCTS,10,92,82,checkmate,0-1,0,0.0,1.0,MCTS,8.527,41,0.0651,0.005,0,1,0,41,8.329,0.3121,1,2.756,411.0,-16.3,terminal
+T134,A3_siciliana_najdorf,134000,MCTS,Voraz,10,63,53,checkmate,1-0,0,1.0,0.0,MCTS,5.569,27,5.4126,0.2012,0,2.926,349.5,26,0.0505,0.0044,0,1,0,19.8,terminal
+T135,A4_inglesa,135000,Voraz,MCTS,6,38,32,checkmate,0-1,0,0.0,1.0,MCTS,3.306,16,0.0379,0.0047,0,1,0,16,3.2079,0.201,0,2.625,380.8,-10.0,terminal
+T136,A4_inglesa,136000,MCTS,Voraz,6,69,63,checkmate,1-0,0,1.0,0.0,MCTS,6.771,32,6.5975,0.333,2,2.688,361.0,31,0.0585,0.004,0,1,0,27.4,terminal
+T137,A5_espanola,137000,Voraz,MCTS,8,28,20,checkmate,0-1,0,0.0,1.0,MCTS,2.085,10,0.0277,0.0035,0,1,0,10,2.0053,0.2009,0,2.6,330.5,-13.4,terminal
+T138,A5_espanola,138000,MCTS,Voraz,8,41,33,checkmate,1-0,0,1.0,0.0,MCTS,3.612,17,3.5086,0.3016,1,2.824,353.8,16,0.0387,0.004,0,1,0,21.3,terminal
+T139,A6_francesa,139000,Voraz,MCTS,6,86,80,checkmate,0-1,0,0.0,1.0,MCTS,8.353,40,0.0859,0.0044,0,1,0,40,8.1144,0.2495,0,2.725,343.5,-24.2,terminal
+T140,A6_francesa,140000,MCTS,Voraz,6,69,63,checkmate,1-0,0,1.0,0.0,MCTS,6.595,32,6.4143,0.2019,0,2.688,374,31,0.0747,0.0039,0,1,0,5.0,terminal
+T141,A7_caro_kann,141000,Voraz,MCTS,8,56,48,checkmate,0-1,0,0.0,1.0,MCTS,4.974,24,0.0554,0.0051,0,1,0,24,4.8329,0.2224,0,2.875,384.2,-19.8,terminal
+T142,A7_caro_kann,142000,MCTS,Voraz,8,66,58,threefold_repetition,1/2-1/2,0,0.5,0.5,,5.948,29,5.8107,0.2009,0,3,431.6,29,0.0465,0.0039,0,1,0,16.2,terminal
+T143,A8_eslava,143000,Voraz,MCTS,6,105,99,checkmate,1-0,0,1.0,0.0,Voraz,10.207,50,0.1433,0.0059,0,1,0,49,9.9098,0.2936,1,3.408,456.1,20.0,terminal
+T144,A8_eslava,144000,MCTS,Voraz,6,55,49,checkmate,1-0,0,1.0,0.0,MCTS,5.316,25,5.1963,0.3028,2,2.48,427.4,24,0.0388,0.0038,0,1,0,27.8,terminal
+T145,A1_italiana,145000,Minimax,Alfa-beta,6,45,39,threefold_repetition,1/2-1/2,0,0.5,0.5,,3.865,20,2.5451,0.3335,3,2,0,19,1.228,0.112,0,2,0,1.1,terminal
+T146,A1_italiana,146000,Alfa-beta,Minimax,6,45,39,threefold_repetition,1/2-1/2,0,0.5,0.5,,5.479,20,1.408,0.2176,0,2,0,19,3.9809,0.3309,5,2,0,1.1,terminal
+T147,A2_gambito_dama_rehusado,147000,Minimax,Alfa-beta,6,24,18,checkmate,0-1,0,0.0,1.0,Alfa-beta,1.082,9,0.8743,0.1341,0,2,0,9,0.1804,0.0428,0,2,0,6.9,terminal
+T148,A2_gambito_dama_rehusado,148000,Alfa-beta,Minimax,6,24,18,checkmate,0-1,0,0.0,1.0,Minimax,1.181,9,0.312,0.0766,0,2,0,9,0.8364,0.1351,0,2,0,6.9,terminal
+T149,A3_siciliana_najdorf,149000,Minimax,Alfa-beta,10,63,53,threefold_repetition,1/2-1/2,0,0.5,0.5,,2.513,27,1.7092,0.1682,0,2,0,26,0.7119,0.095,0,2,0,-14.7,terminal
+T150,A3_siciliana_najdorf,150000,Alfa-beta,Minimax,10,63,53,threefold_repetition,1/2-1/2,0,0.5,0.5,,3.502,27,0.8366,0.1164,0,2,0,26,2.5673,0.2042,0,2,0,-14.7,terminal
+T151,A4_inglesa,151000,Minimax,Alfa-beta,6,69,63,checkmate,1-0,0,1.0,0.0,Minimax,4.692,32,3.6595,0.1956,0,2,0,31,0.8961,0.119,0,2,0,26.3,terminal
+T152,A4_inglesa,152000,Alfa-beta,Minimax,6,69,63,checkmate,1-0,0,1.0,0.0,Alfa-beta,4.467,32,1.5331,0.1613,0,2,0,31,2.8054,0.2185,0,2,0,26.3,terminal
+T153,A5_espanola,153000,Minimax,Alfa-beta,8,54,46,checkmate,0-1,0,0.0,1.0,Alfa-beta,2.277,23,1.7531,0.1536,0,2,0,23,0.4549,0.0424,0,2,0,-2.5,terminal
+T154,A5_espanola,154000,Alfa-beta,Minimax,8,54,46,checkmate,0-1,0,0.0,1.0,Minimax,2.973,23,0.8916,0.1083,0,2,0,23,2.0064,0.1842,0,2,0,-2.5,terminal
+T155,A6_francesa,155000,Minimax,Alfa-beta,6,53,47,threefold_repetition,1/2-1/2,0,0.5,0.5,,2.233,24,1.5741,0.1396,0,2,0,23,0.5842,0.0621,0,2,0,-9.2,terminal
+T156,A6_francesa,156000,Alfa-beta,Minimax,6,53,47,threefold_repetition,1/2-1/2,0,0.5,0.5,,2.854,24,0.7978,0.1114,0,2,0,23,1.9793,0.1502,0,2,0,-9.2,terminal
+T157,A7_caro_kann,157000,Minimax,Alfa-beta,8,44,36,checkmate,0-1,0,0.0,1.0,Alfa-beta,1.925,18,1.3073,0.1514,0,2,0,18,0.5549,0.0784,0,2,0,-18.8,terminal
+T158,A7_caro_kann,158000,Alfa-beta,Minimax,8,44,36,checkmate,0-1,0,0.0,1.0,Minimax,2.944,18,0.8231,0.1052,0,2,0,18,2.071,0.1455,0,2,0,-18.8,terminal
+T159,A8_eslava,159000,Minimax,Alfa-beta,6,63,57,checkmate,1-0,0,1.0,0.0,Minimax,5.817,29,4.4556,0.2454,0,2,0,28,1.2492,0.1548,0,2,0,0.6,terminal
+T160,A8_eslava,160000,Alfa-beta,Minimax,6,63,57,checkmate,1-0,0,1.0,0.0,Alfa-beta,7.023,29,2.2964,0.1733,0,2,0,28,4.6092,0.2782,4,2,0,0.6,terminal
+T161,A1_italiana,161000,Minimax,Alfa-beta mejorado,6,51,45,checkmate,1-0,0,1.0,0.0,Minimax,6.867,23,2.5551,0.2159,0,2,0,22,4.2135,0.2009,0,2.636,0,14.0,terminal
+T162,A1_italiana,162000,Alfa-beta mejorado,Minimax,6,38,32,threefold_repetition,1/2-1/2,0,0.5,0.5,,4.491,16,3.2061,0.2008,0,2.312,0,16,1.2372,0.1819,0,2,0,14.5,terminal
+T163,A2_gambito_dama_rehusado,163000,Minimax,Alfa-beta mejorado,6,54,48,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,6.878,24,2.2674,0.1759,0,2,0,24,4.5496,0.2005,0,2.375,0,-5.5,terminal
+T164,A2_gambito_dama_rehusado,164000,Alfa-beta mejorado,Minimax,6,51,45,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,5.678,23,4.4206,0.2023,0,2.304,0,22,1.1847,0.1383,0,2,0,26.7,terminal
+T165,A3_siciliana_najdorf,165000,Minimax,Alfa-beta mejorado,10,58,48,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,7.344,24,2.7325,0.2055,0,2,0,24,4.51,0.2007,0,2.667,0,-2.2,terminal
+T166,A3_siciliana_najdorf,166000,Alfa-beta mejorado,Minimax,10,74,64,checkmate,0-1,0,0.0,1.0,Minimax,10.948,32,6.221,0.2007,0,2.375,0,32,4.5655,0.2925,3,2,0,-7.8,terminal
+T167,A4_inglesa,167000,Minimax,Alfa-beta mejorado,6,88,82,threefold_repetition,1/2-1/2,0,0.5,0.5,,12.208,41,3.8218,0.233,0,2,0,41,8.2167,0.2008,0,2.732,0,8.0,terminal
+T168,A4_inglesa,168000,Alfa-beta mejorado,Minimax,6,82,76,checkmate,0-1,0,0.0,1.0,Minimax,11.522,38,7.4139,0.2007,0,2.737,0,38,3.9712,0.2389,0,2,0,-5.2,terminal
+T169,A5_espanola,169000,Minimax,Alfa-beta mejorado,8,30,22,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,3.189,11,1.1677,0.1514,0,2,0,11,1.9852,0.2007,0,2.273,0,-10.1,terminal
+T170,A5_espanola,170000,Alfa-beta mejorado,Minimax,8,43,35,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,6.316,18,3.4143,0.2008,0,2.111,0,17,2.8175,0.2625,1,2,0,4.2,terminal
+T171,A6_francesa,171000,Minimax,Alfa-beta mejorado,6,46,40,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,5.552,20,1.6613,0.1546,0,2,0,20,3.8141,0.2007,0,2.4,0,-19.5,terminal
+T172,A6_francesa,172000,Alfa-beta mejorado,Minimax,6,127,121,threefold_repetition,1/2-1/2,0,0.5,0.5,,18.872,61,12.2246,0.2009,0,2.623,0,60,6.3856,0.2007,0,2,0,-8.4,terminal
+T173,A7_caro_kann,173000,Minimax,Alfa-beta mejorado,8,44,36,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,5.131,18,1.6401,0.1834,0,2,0,18,3.4142,0.201,0,2.222,0,-18.8,terminal
+T174,A7_caro_kann,174000,Alfa-beta mejorado,Minimax,8,75,67,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,9.765,34,6.5017,0.2011,0,2.676,0,33,3.1501,0.1832,0,2,0,2.2,terminal
+T175,A8_eslava,175000,Minimax,Alfa-beta mejorado,6,75,69,checkmate,1-0,0,1.0,0.0,Minimax,11.954,35,5.1873,0.2615,3,2,0,34,6.6201,0.2009,0,2.647,0,9.0,terminal
+T176,A8_eslava,176000,Alfa-beta mejorado,Minimax,6,49,43,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,6.296,22,4.2154,0.2007,0,2.318,0,21,1.9933,0.1441,0,2,0,10.5,terminal
+T177,A1_italiana,177000,Minimax,MCTS,6,55,49,checkmate,1-0,0,1.0,0.0,Minimax,7.303,25,2.3995,0.1434,0,2,0,24,4.8087,0.2009,0,2.958,378.2,22.5,terminal
+T178,A1_italiana,178000,MCTS,Minimax,6,48,42,checkmate,0-1,0,0.0,1.0,Minimax,5.811,21,4.2703,0.2632,1,2.476,504.9,21,1.4795,0.1167,0,2,0,-8.6,terminal
+T179,A2_gambito_dama_rehusado,179000,Minimax,MCTS,6,83,77,checkmate,1-0,0,1.0,0.0,Minimax,10.287,39,2.4514,0.1244,0,2,0,38,7.6935,0.2476,0,2.763,387.2,25.8,terminal
+T180,A2_gambito_dama_rehusado,180000,MCTS,Minimax,6,97,91,threefold_repetition,1/2-1/2,0,0.5,0.5,,13.012,46,9.3262,0.3076,1,3.022,381.8,45,3.5053,0.1861,0,2,0,-13.3,terminal
+T181,A3_siciliana_najdorf,181000,Minimax,MCTS,10,35,25,checkmate,1-0,0,1.0,0.0,Minimax,3.749,13,1.2211,0.164,0,2,0,12,2.4733,0.2678,1,2.583,338.8,22.5,terminal
+T182,A3_siciliana_najdorf,182000,MCTS,Minimax,10,42,32,checkmate,0-1,0,0.0,1.0,Minimax,4.925,16,3.2083,0.2014,0,2.562,364.1,16,1.6514,0.1682,0,2,0,-33.0,terminal
+T183,A4_inglesa,183000,Minimax,MCTS,6,54,48,threefold_repetition,1/2-1/2,0,0.5,0.5,,6.917,24,2.0277,0.1266,0,2,0,24,4.8088,0.2008,0,2.333,392.2,11.3,terminal
+T184,A4_inglesa,184000,MCTS,Minimax,6,66,60,checkmate,0-1,0,0.0,1.0,Minimax,8.044,30,6.0115,0.2019,0,2.633,406.3,30,1.929,0.1184,0,2,0,-32.5,terminal
+T185,A5_espanola,185000,Minimax,MCTS,8,124,116,threefold_repetition,1/2-1/2,0,0.5,0.5,,14.252,58,2.4509,0.1553,0,2,0,58,11.6215,0.2023,0,3.517,452.1,1.0,terminal
+T186,A5_espanola,186000,MCTS,Minimax,8,60,52,checkmate,0-1,0,0.0,1.0,Minimax,7.132,26,5.2085,0.2012,0,3.038,382.5,26,1.8201,0.132,0,2,0,-30.6,terminal
+T187,A6_francesa,187000,Minimax,MCTS,6,57,51,checkmate,1-0,0,1.0,0.0,Minimax,7.736,26,2.6203,0.1805,0,2,0,25,5.009,0.2007,0,2.64,388,26.2,terminal
+T188,A6_francesa,188000,MCTS,Minimax,6,68,62,checkmate,0-1,0,0.0,1.0,Minimax,9.321,31,6.4042,0.3065,2,2.581,384.5,31,2.8021,0.1339,0,2,0,-2.8,terminal
+T189,A7_caro_kann,189000,Minimax,MCTS,8,47,39,checkmate,1-0,0,1.0,0.0,Minimax,5.376,20,1.4958,0.134,0,2,0,19,3.8079,0.2009,0,2.684,396.5,17.8,terminal
+T190,A7_caro_kann,190000,MCTS,Minimax,8,84,76,checkmate,0-1,0,0.0,1.0,Minimax,10.556,38,7.715,0.2866,1,2.553,370.2,38,2.7046,0.138,0,2,0,-22.5,terminal
+T191,A8_eslava,191000,Minimax,MCTS,6,51,45,checkmate,1-0,0,1.0,0.0,Minimax,6.292,23,1.801,0.1381,0,2,0,22,4.4095,0.2016,0,2.318,378.5,20.7,terminal
+T192,A8_eslava,192000,MCTS,Minimax,6,16,10,checkmate,0-1,0,0.0,1.0,Minimax,1.616,5,1.002,0.2006,0,2.2,351,5,0.5926,0.1698,0,2,0,-6.5,terminal
+T193,A1_italiana,193000,Alfa-beta,Alfa-beta mejorado,6,51,45,checkmate,1-0,0,1.0,0.0,Alfa-beta,5.678,23,1.3645,0.1401,0,2,0,22,4.2145,0.2007,0,2.636,0,14.0,terminal
+T194,A1_italiana,194000,Alfa-beta mejorado,Alfa-beta,6,38,32,threefold_repetition,1/2-1/2,0,0.5,0.5,,3.77,16,3.2085,0.2008,0,2.188,0,16,0.4963,0.0936,0,2,0,14.5,terminal
+T195,A2_gambito_dama_rehusado,195000,Alfa-beta,Alfa-beta mejorado,6,72,66,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,7.371,33,0.8329,0.0737,0,2,0,33,6.4224,0.201,0,2.394,0,-25.6,terminal
+T196,A2_gambito_dama_rehusado,196000,Alfa-beta mejorado,Alfa-beta,6,61,55,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,6.212,28,5.402,0.2012,0,2.321,0,27,0.6994,0.0634,0,2,0,28.5,terminal
+T197,A3_siciliana_najdorf,197000,Alfa-beta,Alfa-beta mejorado,10,58,48,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,5.817,24,1.2248,0.1299,0,2,0,24,4.5036,0.2009,0,2.667,0,-2.2,terminal
+T198,A3_siciliana_najdorf,198000,Alfa-beta mejorado,Alfa-beta,10,73,63,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,7.453,32,6.1534,0.2009,0,2.188,0,31,1.1658,0.0953,0,2,0,8.9,terminal
+T199,A4_inglesa,199000,Alfa-beta,Alfa-beta mejorado,6,35,29,checkmate,1-0,0,1.0,0.0,Alfa-beta,3.517,15,0.8502,0.106,0,2,0,14,2.6077,0.2007,0,2.286,0,10.1,terminal
+T200,A4_inglesa,200000,Alfa-beta mejorado,Alfa-beta,6,52,46,checkmate,0-1,0,0.0,1.0,Alfa-beta,5.297,23,4.4122,0.2006,0,2.478,0,23,0.7968,0.1071,0,2,0,5.6,terminal
+T201,A5_espanola,201000,Alfa-beta,Alfa-beta mejorado,8,74,66,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,8.264,33,1.7205,0.1692,0,2,0,33,6.4184,0.2009,0,2.152,0,-13.1,terminal
+T202,A5_espanola,202000,Alfa-beta mejorado,Alfa-beta,8,43,35,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,4.207,18,3.4126,0.2011,0,2.111,0,17,0.7033,0.0751,0,2,0,4.2,terminal
+T203,A6_francesa,203000,Alfa-beta,Alfa-beta mejorado,6,46,40,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,4.793,20,0.9115,0.0995,0,2,0,20,3.8125,0.2007,0,2.45,0,-19.5,terminal
+T204,A6_francesa,204000,Alfa-beta mejorado,Alfa-beta,6,101,95,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,10.75,48,9.3961,0.2008,0,2.583,0,47,1.1584,0.0869,0,2,0,17.0,terminal
+T205,A7_caro_kann,205000,Alfa-beta,Alfa-beta mejorado,8,44,36,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,4.496,18,1.0066,0.1334,0,2,0,18,3.4159,0.2008,0,2.222,0,-18.8,terminal
+T206,A7_caro_kann,206000,Alfa-beta mejorado,Alfa-beta,8,79,71,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,8.207,36,6.9895,0.2008,0,2.556,0,35,1.0533,0.0864,0,2,0,8.2,terminal
+T207,A8_eslava,207000,Alfa-beta,Alfa-beta mejorado,6,77,71,checkmate,1-0,0,1.0,0.0,Alfa-beta,8.958,36,1.9973,0.1503,0,2,0,35,6.8213,0.2009,0,2.571,0,4.0,terminal
+T208,A8_eslava,208000,Alfa-beta mejorado,Alfa-beta,6,41,35,threefold_repetition,1/2-1/2,0,0.5,0.5,,4.18,18,3.6079,0.2008,0,2.167,0,17,0.4965,0.0927,0,2,0,-3.2,terminal
+T209,A1_italiana,209000,Alfa-beta,MCTS,6,71,65,checkmate,1-0,0,1.0,0.0,Alfa-beta,7.494,33,0.8536,0.0724,0,2,0,32,6.521,0.2954,1,3.219,415.2,26.4,terminal
+T210,A1_italiana,210000,MCTS,Alfa-beta,6,68,62,checkmate,0-1,0,0.0,1.0,Alfa-beta,7.201,31,6.2335,0.2213,0,2.71,411.2,31,0.8509,0.0925,0,2,0,-17.3,terminal
+T211,A2_gambito_dama_rehusado,211000,Alfa-beta,MCTS,6,78,72,threefold_repetition,1/2-1/2,0,0.5,0.5,,8.942,36,1.3922,0.1312,0,2,0,36,7.3922,0.3117,2,3.056,346.1,20.5,terminal
+T212,A2_gambito_dama_rehusado,212000,MCTS,Alfa-beta,6,121,115,threefold_repetition,1/2-1/2,0,0.5,0.5,,12.867,58,11.8566,0.3206,2,3.052,446.1,57,0.8319,0.0562,0,2,0,-4.3,terminal
+T213,A3_siciliana_najdorf,213000,Alfa-beta,MCTS,10,23,13,checkmate,1-0,0,1.0,0.0,Alfa-beta,1.496,7,0.2587,0.0661,0,2,0,6,1.2031,0.2009,0,2,337.5,4.3,terminal
+T214,A3_siciliana_najdorf,214000,MCTS,Alfa-beta,10,96,86,checkmate,0-1,0,0.0,1.0,Alfa-beta,10.201,43,8.6228,0.205,0,2.651,366.5,43,1.3934,0.2561,1,2,0,-19.8,terminal
+T215,A4_inglesa,215000,Alfa-beta,MCTS,6,59,53,checkmate,1-0,0,1.0,0.0,Alfa-beta,6.563,27,1.1394,0.0908,0,2,0,26,5.2984,0.2869,1,2.038,337.7,13.2,terminal
+T216,A4_inglesa,216000,MCTS,Alfa-beta,6,22,16,checkmate,0-1,0,0.0,1.0,Alfa-beta,1.906,8,1.6037,0.2008,0,2.125,369.1,8,0.2678,0.0593,0,2,0,-7.5,terminal
+T217,A5_espanola,217000,Alfa-beta,MCTS,8,41,33,checkmate,1-0,0,1.0,0.0,Alfa-beta,3.846,17,0.5698,0.0821,0,2,0,16,3.2076,0.2007,0,2.688,353.9,24.4,terminal
+T218,A5_espanola,218000,MCTS,Alfa-beta,8,30,22,checkmate,0-1,0,0.0,1.0,Alfa-beta,2.509,11,2.2044,0.2008,0,2.909,342.2,11,0.2621,0.037,0,2,0,-6.1,terminal
+T219,A6_francesa,219000,Alfa-beta,MCTS,6,27,21,checkmate,1-0,0,1.0,0.0,Alfa-beta,2.643,11,0.5624,0.0945,0,2,0,10,2.0314,0.2267,0,2.6,285.3,2.0,terminal
+T220,A6_francesa,220000,MCTS,Alfa-beta,6,86,80,checkmate,0-1,0,0.0,1.0,Alfa-beta,9.529,40,8.016,0.2011,0,2.825,377.2,40,1.349,0.1025,0,2,0,-19.3,terminal
+T221,A7_caro_kann,221000,Alfa-beta,MCTS,8,45,37,checkmate,1-0,0,1.0,0.0,Alfa-beta,4.365,19,0.6821,0.1155,0,2,0,18,3.6068,0.2007,0,2.944,357.3,26.6,terminal
+T222,A7_caro_kann,222000,MCTS,Alfa-beta,8,100,92,checkmate,0-1,0,0.0,1.0,Alfa-beta,10.908,46,9.3735,0.2768,2,2.87,348.3,46,1.3189,0.1196,0,2,0,-24.0,terminal
+T223,A8_eslava,223000,Alfa-beta,MCTS,6,22,16,threefold_repetition,1/2-1/2,0,0.5,0.5,,1.836,8,0.206,0.0592,0,2,0,8,1.6019,0.2006,0,3.375,366.6,5.2,terminal
+T224,A8_eslava,224000,MCTS,Alfa-beta,6,56,50,checkmate,0-1,0,0.0,1.0,Alfa-beta,6.043,25,5.1017,0.2922,1,2.52,393.6,25,0.844,0.069,0,2,0,-18.5,terminal
+T225,A1_italiana,225000,Alfa-beta mejorado,MCTS,6,25,19,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,3.63,10,1.7938,0.2005,0,2.3,0,9,1.803,0.2007,0,3.111,403.2,23.0,terminal
+T226,A1_italiana,226000,MCTS,Alfa-beta mejorado,6,14,8,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,1.493,4,0.8742,0.2737,1,2.5,434.2,4,0.6068,0.2004,0,2.5,0,-4.2,terminal
+T227,A2_gambito_dama_rehusado,227000,Alfa-beta mejorado,MCTS,6,71,65,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,12.904,33,6.3407,0.2008,0,3.152,0,32,6.4714,0.2618,1,3.344,499.8,14.5,terminal
+T228,A2_gambito_dama_rehusado,228000,MCTS,Alfa-beta mejorado,6,42,36,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,7.189,18,3.7053,0.2973,1,2.444,406.4,18,3.4132,0.2007,0,2.389,0,-28.2,terminal
+T229,A3_siciliana_najdorf,229000,Alfa-beta mejorado,MCTS,10,55,45,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,8.966,23,4.4041,0.2008,0,2.043,0,22,4.4676,0.2616,1,2.773,428.5,25.2,terminal
+T230,A3_siciliana_najdorf,230000,MCTS,Alfa-beta mejorado,10,84,74,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,15.042,37,7.6532,0.3348,2,2.946,367.6,37,7.2332,0.2037,0,2.297,0,-29.0,terminal
+T231,A4_inglesa,231000,Alfa-beta mejorado,MCTS,6,77,71,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,14.2,36,7.0241,0.201,0,2.444,0,35,7.0184,0.2025,0,2.457,338.9,26.8,terminal
+T232,A4_inglesa,232000,MCTS,Alfa-beta mejorado,6,114,108,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,21.766,54,10.9369,0.3185,1,3.37,398.9,54,10.6347,0.201,0,2.556,0,-24.2,terminal
+T233,A5_espanola,233000,Alfa-beta mejorado,MCTS,8,75,67,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,13.394,34,6.5473,0.2008,0,2.176,0,33,6.7287,0.318,1,2.455,422.1,12.4,terminal
+T234,A5_espanola,234000,MCTS,Alfa-beta mejorado,8,38,30,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,5.954,15,3.1128,0.3076,1,2.933,449.5,15,2.7955,0.2007,0,2.467,0,-16.0,terminal
+T235,A6_francesa,235000,Alfa-beta mejorado,MCTS,6,59,53,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,10.589,27,5.2211,0.2012,0,2.074,0,26,5.2615,0.2497,0,2.462,385.9,32.7,terminal
+T236,A6_francesa,236000,MCTS,Alfa-beta mejorado,6,50,44,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,8.807,22,4.4742,0.2643,1,2.545,339,22,4.222,0.2011,0,2.091,0,-11.7,terminal
+T237,A7_caro_kann,237000,Alfa-beta mejorado,MCTS,8,69,61,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,12.169,31,6.0229,0.2013,0,2.065,0,30,6.0126,0.2023,0,2.933,344.1,30.5,terminal
+T238,A7_caro_kann,238000,MCTS,Alfa-beta mejorado,8,62,54,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,10.797,27,5.461,0.2496,0,2.481,344.3,27,5.2222,0.201,0,2.222,0,-30.4,terminal
+T239,A8_eslava,239000,Alfa-beta mejorado,MCTS,6,101,95,checkmate,1-0,0,1.0,0.0,Alfa-beta mejorado,19.058,48,9.3199,0.2008,0,2.812,0,47,9.5676,0.3392,1,2.809,416.1,22.3,terminal
+T240,A8_eslava,240000,MCTS,Alfa-beta mejorado,6,72,66,checkmate,0-1,0,0.0,1.0,Alfa-beta mejorado,13.144,33,6.6118,0.2008,0,2.545,466.4,33,6.4195,0.2008,0,2.606,0,-17.1,terminal
