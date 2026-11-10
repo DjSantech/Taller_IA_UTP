@@ -1,0 +1,13 @@
+# Dependencias del Taller 3 — versiones verificadas sobre Python 3.13.7 (Windows 11).
+# La reproducibilidad incluye las versiones de las bibliotecas, no solo las semillas.
+
+chess==1.11.2          # python-chess: reglas, jugadas legales, FEN, PGN y SVG (no decide jugadas)
+ipywidgets==8.1.9      # controles de la interfaz grafica en Jupyter
+widgetsnbextension==4.0.16
+notebook==7.6.5        # Jupyter Notebook
+ipykernel==7.4.0       # kernel asociado al entorno virtual
+matplotlib==3.11.2     # graficas de los experimentos
+numpy==2.5.4           # medias, dispersiones y tablas
+nbformat==5.11.1       # tools/: construir y validar el .ipynb
+nbclient==0.11.0       # tools/: ejecutar el cuaderno en un kernel nuevo
+pytest==9.2.0          # pruebas unitarias de los modulos

@@ -1,0 +1,34 @@
+# Entornos virtuales (el del taller vive fuera de OneDrive: C:\Users\<usuario>\venvs\ia-taller3)
+.venv/
+venv/
+env/
+
+# Cache de Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# Registros de ejecucion y borradores (no son resultados del taller)
+*.log
+resultados/borradores/
+resultados/tmp/
+
+# Ajustes locales del editor y de herramientas (rutas absolutas de esta maquina)
+.vscode/
+.idea/
+.claude/
+CLAUDE.md
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+
+# Apuntes personales de estudio para la sustentacion (no forman parte de la entrega)
+estudio/
+
+# NOTA: resultados/*.csv, *.pgn, *.json (configuracion) y *.png SI se versionan:
+# la lista de entrega exige CSV de decisiones/resultados, PGN y configuracion del torneo.
