@@ -13,7 +13,7 @@ en una carpeta temporal (el archivo versionado no lleva salidas).
 
 KERNEL: debe ser el del entorno virtual ia-taller3. Se usa el kernel `python3` del
 Python que lanza este script, asi que hay que invocarlo con el del venv:
-    C:/Users/santi/venvs/ia-taller3/Scripts/python.exe tools/ejecutar_cuaderno.py
+    C:/Users/<usuario>/venvs/ia-taller3/Scripts/python.exe tools/ejecutar_cuaderno.py
 
 Uso:
     python tools/ejecutar_cuaderno.py                      # autodeteccion (un solo .ipynb en la raiz)

@@ -1,0 +1,225 @@
+{
+  "weights": [
+    100.0,
+    100.0,
+    53.375,
+    0.0
+  ],
+  "weight_names": [
+    "wm",
+    "wp",
+    "wk",
+    "wa"
+  ],
+  "feature_names": [
+    "M_material",
+    "P_peones",
+    "K_rey",
+    "A_actividad"
+  ],
+  "initial_weights": [
+    100.0,
+    15.0,
+    10.0,
+    4.0
+  ],
+  "chosen_method": "HC",
+  "selection_rule": "menor J de entrenamiento entre HC y SA (empate -> HC); prueba no participa",
+  "K": 1789.475072447792,
+  "k_calibration_evals": 30,
+  "objective": {
+    "train_initial": 0.04520605288591441,
+    "train_tuned": 0.04441845222812699,
+    "test_initial": 0.05063358354780556,
+    "test_tuned": 0.04999029518345026,
+    "train_material_only": 0.04529660732415867,
+    "test_material_only": 0.05103356462895252,
+    "train_constant": 0.06076067333001127,
+    "test_constant": 0.07180197140068073,
+    "constant_prediction": 0.4869805668638144
+  },
+  "methods": {
+    "HC": {
+      "best_weights": [
+        100.0,
+        100.0,
+        53.375,
+        0.0
+      ],
+      "train_obj": 0.04441845222812699,
+      "test_obj": 0.04999029518345026,
+      "evals": 135,
+      "stop_reason": "optimo_local",
+      "final_steps": [
+        0.0,
+        0.0625,
+        0.0625,
+        0.015625
+      ]
+    },
+    "SA": {
+      "best_weights": [
+        100.0,
+        100.0,
+        53.681,
+        0.0
+      ],
+      "train_obj": 0.04441845287364174,
+      "test_obj": 0.049990666355638015,
+      "evals": 300,
+      "stop_reason": "presupuesto",
+      "t0": 3.4111060677060265e-05,
+      "seed": 2026
+    }
+  },
+  "ablation": [
+    {
+      "weight": "wp",
+      "feature": "P_peones",
+      "value_tuned": 100.0,
+      "value_initial": 15.0,
+      "train_obj": 0.04501771501995725,
+      "test_obj": 0.0507875285571553
+    },
+    {
+      "weight": "wk",
+      "feature": "K_rey",
+      "value_tuned": 53.375,
+      "value_initial": 10.0,
+      "train_obj": 0.044435406584411336,
+      "test_obj": 0.04995464082081898
+    },
+    {
+      "weight": "wa",
+      "feature": "A_actividad",
+      "value_tuned": 0.0,
+      "value_initial": 4.0,
+      "train_obj": 0.04466171738242074,
+      "test_obj": 0.04994414751370877
+    }
+  ],
+  "paired_test_by_game": {
+    "games": 240,
+    "mean_diff": -0.00028427699366872247,
+    "se": 0.0005552268601930507,
+    "frac_games_improved": 0.4875
+  },
+  "dataset": {
+    "train_positions": 13019,
+    "test_positions": 6690,
+    "train_label_mean": 0.4869805668638144,
+    "test_label_mean": 0.5084454409566517,
+    "train": {
+      "games": 600,
+      "truncated_games": 127,
+      "results": {
+        "1/2-1/2": 279,
+        "1-0": 92,
+        "0-1": 102
+      },
+      "terminations": {
+        "truncated": 127,
+        "insufficient_material": 206,
+        "checkmate": 194,
+        "threefold_repetition": 68,
+        "stalemate": 5
+      },
+      "positions_sampled": 13042,
+      "duplicates_dropped": 23,
+      "excluded_by_other_split": 0,
+      "positions_kept": 13019
+    },
+    "test": {
+      "games": 300,
+      "truncated_games": 54,
+      "results": {
+        "1-0": 52,
+        "1/2-1/2": 141,
+        "0-1": 53
+      },
+      "terminations": {
+        "checkmate": 105,
+        "insufficient_material": 105,
+        "truncated": 54,
+        "threefold_repetition": 32,
+        "stalemate": 3,
+        "fifty_moves": 1
+      },
+      "positions_sampled": 6694,
+      "duplicates_dropped": 3,
+      "excluded_by_other_split": 1,
+      "positions_kept": 6690
+    }
+  },
+  "config": {
+    "train_games": 600,
+    "test_games": 300,
+    "train_seed": 31,
+    "test_seed": 7919,
+    "eps_range": [
+      0.0,
+      0.5
+    ],
+    "max_plies": 200,
+    "min_ply": 8,
+    "stride": 3,
+    "k_evals": 30,
+    "k_bounds": [
+      20.0,
+      5000.0
+    ],
+    "initial_weights": [
+      100.0,
+      15.0,
+      10.0,
+      4.0
+    ],
+    "free": [
+      1,
+      2,
+      3
+    ],
+    "bounds": [
+      [
+        100.0,
+        100.0
+      ],
+      [
+        0.0,
+        100.0
+      ],
+      [
+        0.0,
+        100.0
+      ],
+      [
+        0.0,
+        30.0
+      ]
+    ],
+    "steps": [
+      0.0,
+      8.0,
+      8.0,
+      2.0
+    ],
+    "min_step_ratio": 0.015625,
+    "max_evals": 300,
+    "sa_seed": 2026,
+    "sa_p0": 0.5,
+    "sa_calib": 20,
+    "sa_t_final_ratio": 0.001
+  },
+  "versions": {
+    "python": "3.13.7",
+    "chess": "1.11.2",
+    "numpy": "2.5.4"
+  },
+  "timing_s": {
+    "data": 75.87404720000632,
+    "search": 0.09946789999958128,
+    "total": 78.25603899999987,
+    "cpu_data": 74.34375,
+    "cpu_total": 76.734375
+  }
+}
