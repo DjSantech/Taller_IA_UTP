@@ -16,6 +16,7 @@ __pycache__/
 *.log
 resultados/borradores/
 resultados/tmp/
+resultados/interfaz/
 
 # Ajustes locales del editor y de herramientas (rutas absolutas de esta maquina)
 .vscode/
