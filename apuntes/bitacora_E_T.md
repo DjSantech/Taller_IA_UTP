@@ -234,3 +234,15 @@ ejecuciones reales (Python 3.13.7, python-chess 1.11.2, numpy 2.5.4).
   byte), los pesos y J coincidieron con la primera, lo que confirma la reproducibilidad.
 - **Lección:** un tiempo de pared solo es evidencia si la máquina estuvo dedicada; para el costo
   real de cómputo se reporta CPU.
+
+### E-12 · Máscaras de peón pasado precalculadas (optimización sin cambio de valores)
+- **Decisión:** `_PASSED_MASK[color][casilla]` se calcula una vez al importar (2 × 64 enteros)
+  en vez de construir la máscara con bucles en cada llamada a E.
+- **Alternativas:** dejar E como estaba; reescribir toda la estructura de peones con desplazamientos de bitboards.
+- **Por qué:** el perfil del agente de búsqueda (S-13) mostró que esa construcción era la parte más
+  cara de E, y E domina el costo de cada hoja en minimax y alfa-beta.
+- **Verificación:** el vector de características es **idéntico** (comparación exacta, no aproximada)
+  en 4000 posiciones del conjunto de ajuste antes y después del cambio, así que los pesos ajustados
+  y todos los resultados previos siguen siendo válidos. Tiempo medido por llamada a `evaluate`
+  (mejor de 3 sobre las mismas 4000 posiciones): **51.9 µs → 41.9 µs (−19 %)**. La ganancia es
+  menor que la estimada en S-13 porque estas posiciones tienen pocos peones; en medio juego es mayor.

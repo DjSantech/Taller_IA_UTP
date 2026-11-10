@@ -32,6 +32,23 @@ FEATURE_NAMES = ("M_material", "P_peones", "K_rey", "A_actividad")
 _FULL_PHASE = 2 * (2 * 3.2 + 2 * 3.3 + 2 * 5.0 + 9.0)
 
 
+def _passed_mask(color: chess.Color, sq: int) -> int:
+    """Casillas delante del peon en su columna y las vecinas: si no hay peon rival ahi, es pasado."""
+    f, r = chess.square_file(sq), chess.square_rank(sq)
+    ahead = 0
+    ranks = range(r + 1, 8) if color == chess.WHITE else range(0, r)
+    for rr in ranks:
+        for ff in (f - 1, f, f + 1):
+            if 0 <= ff < 8:
+                ahead |= chess.BB_SQUARES[chess.square(ff, rr)]
+    return ahead
+
+
+# Precalculadas una vez (2 x 64 enteros): la version que las construia en cada
+# llamada gastaba ~la mitad del costo de E (bitacora S-13 y E-12).
+_PASSED_MASK = {c: [_passed_mask(c, sq) for sq in chess.SQUARES] for c in (chess.WHITE, chess.BLACK)}
+
+
 def _material(board: chess.Board, color: chess.Color) -> float:
     return sum(PIECE_VALUES[pt] * chess.popcount(board.pieces_mask(pt, color))
                for pt in (chess.PAWN, chess.KNIGHT, chess.BISHOP, chess.ROOK, chess.QUEEN))
@@ -54,15 +71,10 @@ def _pawn_structure(board: chess.Board, color: chess.Color) -> float:
             neighbours |= chess.BB_FILES[f + 1]
         if not own & neighbours:
             score -= n                           # aislados
+    masks = _PASSED_MASK[color]
     for sq in chess.scan_forward(own):
-        f, r = chess.square_file(sq), chess.square_rank(sq)
-        ahead = 0
-        ranks = range(r + 1, 8) if color == chess.WHITE else range(0, r)
-        for rr in ranks:
-            for ff in (f - 1, f, f + 1):
-                if 0 <= ff < 8:
-                    ahead |= chess.BB_SQUARES[chess.square(ff, rr)]
-        if not enemy & ahead:                    # pasado: bono creciente con el avance
+        if not enemy & masks[sq]:                # pasado: bono creciente con el avance
+            r = chess.square_rank(sq)
             advance = r if color == chess.WHITE else 7 - r
             score += 1.0 + advance / 6.0
     return score
