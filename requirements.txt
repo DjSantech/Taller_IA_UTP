@@ -1,0 +1,8 @@
+# Dependencias del Taller 4 - versiones verificadas sobre Python 3.13.7 (Windows 11).
+matplotlib==3.11.2     # fuente DejaVu y graficas
+pillow==13.0.0         # animacion GIF suministrada
+ipykernel==7.4.0
+notebook==7.6.5
+nbformat==5.11.1       # tools/: construir el cuaderno
+nbclient==0.11.0       # tools/: ejecutarlo en un kernel nuevo
+pytest==9.2.0
