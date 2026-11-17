@@ -1,6 +1,6 @@
 ### Nuestra arquitectura (sección 4)
 
-El código vive en el paquete `chess_ai/`, con un módulo por responsabilidad y pruebas `pytest` en `tests/`. Las celdas siguientes contienen **el mismo código** que esos módulos (el cuaderno se genera con `tools/construir_cuaderno.py`), así que el cuaderno es autocontenido y se ejecuta de arriba abajo. Las clases `SearchStats`, `Decision` y `Agent` son las de la celda anterior del enunciado, sin cambios.
+El código vive en el paquete `chess_ai/`, con un módulo por responsabilidad y pruebas `pytest` en `tests/`. Para que el cuaderno sea legible, las celdas de código **importan** esos módulos e indican el archivo donde está cada implementación (el cuaderno se genera con `tools/construir_cuaderno.py`; con `--completo` copia el código entero en las celdas). Debe abrirse desde la carpeta del proyecto. Las clases `SearchStats`, `Decision` y `Agent` son las de la celda anterior del enunciado, sin cambios.
 
 | Componente del enunciado | Dónde está | Responsabilidad |
 |---|---|---|

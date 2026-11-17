@@ -21,7 +21,7 @@ Este es el enunciado del docente **completado**. Conservamos todas sus celdas, t
 
 ### Cómo está construido y cómo reproducirlo
 
-El código vive en el paquete `chess_ai/`, con pruebas `pytest` en `tests/`. `tools/construir_cuaderno.py` inserta ese mismo código en las celdas (sin los imports internos), así que el cuaderno es autocontenido: se ejecuta de arriba abajo con un kernel nuevo (`tools/ejecutar_cuaderno.py`), desde la raíz del proyecto. Las tablas y figuras salen de ejecuciones reales: las rápidas se repiten aquí y las largas (torneo, ablación, benchmark de MCTS) se cargan de `resultados/`, donde las escribió `tools/correr_experimentos.py` con el mismo código. Cada decisión y cada error corregido están en `BITACORA.md`. El README explica la instalación.
+El código vive en el paquete `chess_ai/`, con pruebas `pytest` en `tests/`. `tools/construir_cuaderno.py` arma este cuaderno: las celdas importan esos módulos e indican el archivo de cada implementación, para que el cuaderno sea corto de leer. Se ejecuta de arriba abajo con un kernel nuevo (`tools/ejecutar_cuaderno.py`), desde la raíz del proyecto. Las tablas y figuras salen de ejecuciones reales: las rápidas se repiten aquí y las largas (torneo, ablación, benchmark de MCTS) se cargan de `resultados/`, donde las escribió `tools/correr_experimentos.py` con el mismo código. Cada decisión y cada error corregido están en `BITACORA.md`. El README explica la instalación.
 
 ### Fuentes y ayudas utilizadas (declaración)
 

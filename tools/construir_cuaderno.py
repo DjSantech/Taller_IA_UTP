@@ -192,9 +192,30 @@ def celdas_de_markdown(ruta):
             yield nbformat.v4.new_markdown_cell(trozo)
 
 
+def celda_de_importacion(nombre, ruta):
+    """Celda corta: importa del modulo propio todos sus nombres de nivel superior.
+
+    Se importan tambien los privados (`_x`) porque algunas celdas de demostracion
+    los usan; el codigo completo se lee en el archivo indicado.
+    """
+    fuente = codigo_de_modulo(ruta)
+    nombres = sorted(n for n in nombres_de_nivel_superior(fuente) if not n.startswith("__"))
+    lineas = sum(1 for _ in leer(ruta).splitlines())
+    doc = ast.get_docstring(ast.parse(leer(ruta))) or ""
+    resumen = doc.strip().splitlines()[0] if doc.strip() else ""
+    cuerpo = ",\n    ".join(nombres)
+    return ("# Modulo propio: {0} ({1} lineas, probado con pytest en tests/).\n"
+            "# {2}\n"
+            "# Abra el archivo para leer la implementacion completa.\n"
+            "from {3}.{4} import (\n    {5},\n)\n").format(ruta, lineas, resumen, PAQUETE, nombre, cuerpo)
+
+
 def main():
     ap = argparse.ArgumentParser(description="Construye el cuaderno entregable.")
     ap.add_argument("--salida", default=os.path.join(RAIZ, NOMBRE))
+    ap.add_argument("--completo", action="store_true",
+                    help="copiar el codigo completo de cada modulo en el cuaderno "
+                         "(por omision solo se importa y se senala el archivo)")
     args = ap.parse_args()
 
     original = enunciado_original()
@@ -213,8 +234,11 @@ def main():
                     faltan.append(ruta)
                     continue
                 modulos.append(ruta)
-                cabecera = "# ===== {0}/{1}.py =====\n".format(PAQUETE, destino)
-                nuevas.append(nbformat.v4.new_code_cell(cabecera + codigo_de_modulo(ruta)))
+                if args.completo:
+                    cabecera = "# ===== {0}/{1}.py =====\n".format(PAQUETE, destino)
+                    nuevas.append(nbformat.v4.new_code_cell(cabecera + codigo_de_modulo(ruta)))
+                else:
+                    nuevas.append(nbformat.v4.new_code_cell(celda_de_importacion(destino, ruta)))
             elif tipo == "py":
                 if existe(destino):
                     propias.append(destino)
