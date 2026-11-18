@@ -86,7 +86,7 @@ def main():
     nb.metadata["kernelspec"] = {"display_name": "Python (ia-taller4)", "language": "python",
                                  "name": "ia-taller4"}
     nb.metadata["language_info"] = {"name": "python"}
-    nb.metadata["authors"] = [{"name": "Santiago Guevara"}, {"name": "Januar Mena"}]
+    nb.metadata["authors"] = [{"name": "Santiago Guevara"}]
     nb.nbformat_minor = 5
     for k, c in enumerate(nb.cells):
         c["id"] = f"c{k:03d}"

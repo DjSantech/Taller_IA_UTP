@@ -1,4 +1,4 @@
-# ===== Reto 4: animacion de NUESTRA ejecucion (5x5, inicio (0, 0), orden rotado 5 posiciones) =====
+# ===== Reto 4: animacion de MI ejecucion (5x5, inicio (0, 0), orden rotado 5 posiciones) =====
 orden_gif = rotar(DESPLAZAMIENTOS, 5)
 estado, camino, traza_propia, expansiones = resolver(5, (0, 0), orden=orden_gif)
 print(f"Ejecucion propia: {estado}, {expansiones} expansiones, {len(traza_propia)} eventos.")

@@ -1,4 +1,4 @@
-# ===== Reto 2: invariante antes y despues de una rama fallida de NUESTRA ejecucion =====
+# ===== Reto 2: invariante antes y despues de una rama fallida de MI ejecucion =====
 estado, camino, traza, expansiones = resolver(5, (0, 0))
 print(f"5x5 desde (0, 0), orden base, fijo: {estado} en {expansiones} expansiones, "
       f"{contar_eventos(traza, 'retroceso')} retrocesos, {len(traza)} eventos.")

@@ -29,5 +29,5 @@ for esperado, kw in casos:
     print(f"{str(kw):70s} -> {estado:8s} expansiones={expansiones:>5}  ultimo evento={traza[-1]}")
 
 assert resolver(5, (0, 0))[2] == TRAZA_DEMO
-print("\nNuestra traza 5x5 desde (0, 0) coincide evento por evento con TRAZA_DEMO del enunciado.")
+print("\nMi traza 5x5 desde (0, 0) coincide evento por evento con TRAZA_DEMO del enunciado.")
 print("Prueba adicional reproducir_traza: todas las aserciones pasan.")

@@ -1,6 +1,6 @@
 ## Traza manual anotada
 
-Este es un fragmento de la traza de **nuestra** ejecución del 5×5 desde (0, 0) con el orden base, del evento 18 al 33. El orden de prueba es `(-1,2) (1,2) (2,1) (2,-1) (1,-2) (-1,-2) (-2,-1) (-2,1)`. «Lista del marco» son los destinos libres de esa casilla en el momento en que se calculan, en ese orden.
+Este es un fragmento de la traza de **mi** ejecución del 5×5 desde (0, 0) con el orden base, del evento 18 al 33. El orden de prueba es `(-1,2) (1,2) (2,1) (2,-1) (1,-2) (-1,-2) (-2,-1) (-2,1)`. «Lista del marco» son los destinos libres de esa casilla en el momento en que se calculan, en ese orden.
 
 | Evento | Tipo | Casilla | Largo | Qué pasa |
 |---:|---|---|---:|---|
@@ -25,4 +25,4 @@ Este es un fragmento de la traza de **nuestra** ejecución del 5×5 desde (0, 0)
 - antes del evento 23: `… → (4,2) → (3,0) → (2,2) → (0,3) → (1,1)`;
 - después del evento 25: `… → (4,2) → (3,0)`; es el marco de (3, 0) el que elige el siguiente destino.
 
-> Cada integrante rehace a mano un fragmento de la traza durante el laboratorio.
+> En el laboratorio rehago a mano un fragmento de la traza como este.

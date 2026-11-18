@@ -1,7 +1,7 @@
 # Taller 4: backtracking y el recorrido del caballo
 
 **Curso:** Inteligencia Artificial (IS784, UTP)
-**Integrantes:** Santiago Guevara y Januar Mena
+**Autor:** Santiago Guevara (taller individual)
 
 Solucionador propio con backtracking para el recorrido del caballo en tableros n×n, en modo abierto y cerrado, con dos estrategias: orden fijo y Warnsdorff. El código respeta el contrato del enunciado: expansiones, presupuesto, traza de eventos y las tres salidas `éxito`, `fracaso` y `límite`.
 
@@ -34,4 +34,4 @@ El caso asignado en clase se cambia en la celda del Reto 3, con las variables `A
 
 ## Ayudas
 
-El docente autorizó el uso de IA declarada. Usamos Claude (mediante Claude Code) como asistente; el detalle está en la portada del cuaderno.
+El docente autorizó el uso de IA declarada. Usé Claude (mediante Claude Code) como asistente; el detalle está en la portada del cuaderno.

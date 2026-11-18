@@ -1,4 +1,4 @@
-### Las tres salidas de búsqueda y nuestra prueba adicional
+### Las tres salidas de búsqueda y mi prueba adicional
 
 La celda anterior muestra las tres salidas:
 
@@ -18,10 +18,10 @@ Además se prueban el 1×1 cerrado (fracaso por falta de salto de regreso) y un 
 
 También verifica `expansiones == avances + 1`.
 
-**Qué error habría detectado:** si al retroceder olvidamos `visitadas.remove(destino)`, el camino se acorta, pero la casilla sigue marcada. En ese caso:
+**Qué error habría detectado:** si al retroceder se olvida `visitadas.remove(destino)`, el camino se acorta, pero la casilla sigue marcada. En ese caso:
 - la comprobación `visitadas == set(camino)` falla en el primer retroceso;
 - además, la búsqueda nunca vuelve a esa casilla y en 5×5 terminaría en fracaso o con otro camino.
 
 Las pruebas del profesor solo miran el resultado final. Esta revisa **cada paso** de la restauración del estado.
 
-**Validación externa:** nuestra traza del 5×5 desde (0, 0) con el orden base es **idéntica, evento por evento**, a `TRAZA_DEMO` del enunciado (58 eventos).
+**Validación externa:** mi traza del 5×5 desde (0, 0) con el orden base es **idéntica, evento por evento**, a `TRAZA_DEMO` del enunciado (58 eventos).

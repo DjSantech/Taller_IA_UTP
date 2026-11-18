@@ -1,6 +1,6 @@
 # Bitácora — Taller 4 (backtracking y recorrido del caballo)
 
-**Integrantes:** Santiago Guevara y Januar Mena. Formato: **Decisión · Alternativas · Por qué · Consecuencia**.
+**Autor:** Santiago Guevara (taller individual). Formato: **Decisión · Alternativas · Por qué · Consecuencia**.
 
 ### B-01 · Mismo esquema de los talleres anteriores
 - El código vive en `caballo/solver.py` con pruebas `pytest`. `tools/construir_cuaderno.py` parte del enunciado del primer commit, **completa** la celda plantilla de los Retos 1–3 con ese código y quita los comentarios de `probar_saltos()` y `probar_resolver()`, como pide el enunciado.
@@ -22,7 +22,7 @@
 - El grado se calcula con el destino marcado como visitado. Gracias a la estabilidad de `sorted`, los empates conservan el orden recibido; una prueba lo comprueba rotando el orden.
 
 ### B-06 · Validación externa con `TRAZA_DEMO`
-- Nuestra traza del 5×5 desde (0, 0) con el orden base es idéntica, evento por evento, a la `TRAZA_DEMO` del enunciado (58 eventos). La prueba busca la celda por su contenido, no por su índice, para que siga funcionando cuando el constructor inserta celdas antes.
+- Mi traza del 5×5 desde (0, 0) con el orden base es idéntica, evento por evento, a la `TRAZA_DEMO` del enunciado (58 eventos). La prueba busca la celda por su contenido, no por su índice, para que siga funcionando cuando el constructor inserta celdas antes.
 
 ### B-07 · ERROR CORREGIDO: circuito cerrado en 6×6 desde (0, 0)
 - **Qué pasó:** la primera versión de la prueba del modo cerrado usaba 6×6 desde (0, 0) con Warnsdorff y daba **límite**, no éxito.
@@ -31,8 +31,8 @@
 - **Lección:** una heurística de orden no cambia **qué** soluciones existen, solo **cuándo** se encuentran.
 
 ### B-08 · ERROR CORREGIDO: traza manual con el marco equivocado
-- **Qué pasó:** en el primer borrador de la traza manual atribuimos la alternativa del evento 26 al marco de (2, 2).
-- **Diagnóstico:** al calcular la lista de cada marco con `saltos_legales` vimos que (2, 2) ya había retrocedido en el evento 25. Quien elige (1, 1) es el marco de (3, 0), cuya lista era `[(2,2), (1,1)]`.
+- **Qué pasó:** en el primer borrador de la traza manual atribuí la alternativa del evento 26 al marco de (2, 2).
+- **Diagnóstico:** al calcular la lista de cada marco con `saltos_legales` vi que (2, 2) ya había retrocedido en el evento 25. Quien elige (1, 1) es el marco de (3, 0), cuya lista era `[(2,2), (1,1)]`.
 - **Corrección:** tabla rehecha con las listas de cada marco calculadas en código.
 - **Lección:** es justo el tipo de pregunta de la sustentación: ¿qué marco elige el siguiente destino?
 

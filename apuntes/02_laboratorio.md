@@ -1,4 +1,4 @@
-### Nuestras respuestas al laboratorio de observación
+### Mis respuestas al laboratorio de observación
 
 **Predicción, antes de ver la animación.** Cuando el caballo retrocede, **desaparece el número más alto del tablero**: el camino pierde su último elemento y la casilla vuelve a estar libre. El caballo queda en la casilla que tenía el número anterior. La celda siguiente lo comprueba sobre `TRAZA_DEMO`.
 
