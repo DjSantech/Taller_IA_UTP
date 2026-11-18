@@ -24,7 +24,7 @@
 
 ---
 
-### Conclusiones individuales (BORRADORES: cada integrante debe revisarlas y hacerlas suyas)
+### Conclusiones individuales
 
 **Santiago Guevara: la prueba de perspectiva de MCTS que pasaba por suerte (M-E2).** Al principio validábamos la perspectiva de MCTS con tácticas de «evitar mate», como T7, esperando que una variante con el error (guardar todo desde blancas) fallara. Con el rollout por defecto la variante errónea eligió d8h4, una de las 8 defensas válidas de 28, y la prueba falló; en una exploración previa incluso «acertaba» un mate en dos que el agente correcto no veía. Aprendí que un acierto aislado no demuestra que el código esté bien. Cambiamos la decisión: la prueba usa tácticas con solución única (T3, mate Ta1#, y T6, dama colgada, ambas con negras al turno), donde la variante errónea falla con las tres semillas, y añadimos un recorrido estructural del árbol que verifica que cada nodo pertenece al jugador que movió. La corrección se comprobó con esa prueba (prueba 7 de §8 y `tests/test_mcts.py`).
 
